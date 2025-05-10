@@ -1,0 +1,445 @@
+@font-face {
+    font-family: "Roboto";
+    src: url("../../fonts/roboto/Roboto-Regular.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Roboto Slab";
+    src: url("../../fonts/roboto-slab/RobotoSlab-VariableFont_wght.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Roboto Mono";
+    src: url("../../fonts/roboto-mono/RobotoMono-VariableFont_wght.ttf") format("truetype");
+}
+
+@font-face {
+    font-family: "Electrolize";
+    src: url("../../fonts/electrolize/Electrolize-Regular.ttf") format("truetype");
+}
+
+#match-view {
+    position: absolute;
+    width: 100%; height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    --info-bar-height: 40px;
+    --border-color: black;
+}
+
+#stream {
+    position: relative;
+    display: flex;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+#stream video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    /* Mirror stream */
+    transform: rotateY(180deg);
+}
+
+#timer {
+    box-sizing: border-box;
+    width: 100%;
+    height: 45px;
+    margin: 0px;
+    background-color: white;
+    border-bottom: solid black 5px;
+}
+
+#timer #bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background-color: green;
+}
+
+#timer #time {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 100px;
+    min-height: 40px;
+    border-radius: 10px;
+    background: rgba(210, 210, 210, 0.8);
+    line-height: 40px;
+    text-align: center;
+    padding-top: 1px;
+    font-size: 40px;
+    font-family: "Roboto";
+    font-weight: bold;
+}
+
+#overlay {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    bottom: 0;
+    width: 100%;
+    height: 250px;
+    margin: 0px;
+    background-color: white;
+    border-top: solid var(--border-color) 5px;
+    box-sizing: border-box;
+
+    --score-box-width: 500px;
+}
+
+#overlay .column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#overlay .row {
+    display: flex;
+    justify-content: space-between;
+}
+#overlay .blue.row { flex-direction: row; }
+#overlay .red.row { flex-direction: row-reverse; }
+
+
+#overlay .indicator {
+    border: 5px solid var(--border-color);
+    box-sizing: border-box;
+    background-color: grey;
+    color: lightgrey;
+    font-family: "Roboto Slab";
+    text-align: center;
+}
+
+#overlay .red .lit.indicator {
+    background-color: red;
+    color: white;
+}
+
+#overlay .blue .lit.indicator {
+    background-color: blue;
+    color: white;
+}
+
+#overlay .label {
+    font-family: "Roboto Slab";
+    font-weight: bold;
+    text-align: center;
+    justify-self: flex-start;
+    width: 100%;
+    font-size: 30px;
+    height: 40px;
+    color: black;
+}
+
+#overlay #scoring-panel {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+    background: linear-gradient(to top, lightgrey 95%, grey);
+    box-sizing: border-box;
+}
+
+#overlay #scoring-panel #match-panel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    width: 630px;
+}
+
+#overlay #scoring-panel #match-panel #match-name {
+    height: 50px; width: 500px;
+    font-family: "Roboto Slab";
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 45px;
+    text-align: center;
+    color: black;
+    background-color: white;
+    border: 5px solid var(--border-color);
+    border-bottom: none;
+    box-sizing: border-box;
+}
+
+#overlay #scoring-panel #match-panel #score-box {
+    width: 500px;
+    height: 160px;
+    border: 5px solid var(--border-color);
+    font-family: Roboto;
+    font-weight: bold;
+    font-size: 90px;
+    text-align: center;
+    line-height: 150px;
+    color: white;
+    text-shadow: 0 0 5px var(--border-color);
+    box-sizing: border-box;
+}
+
+#overlay #scoring-panel #match-panel #score-box .blue {
+    width: calc(50% - 2px);
+    height: 100%;
+    float: left;
+    border-right: 2px solid var(--border-color);
+    background-color: blue;
+}
+
+#overlay #scoring-panel #match-panel #score-box .red {
+    width: calc(50% - 2px);
+    height: 100%;
+    float: right;
+    border-left: 2px solid var(--border-color);
+    background-color: red;
+}
+
+#overlay #scoring-panel #match-panel #teams {
+    position: absolute;
+    height: 210px;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-width: calc(110px + var(--score-box-width));
+    box-sizing: border-box;
+}
+
+#overlay #scoring-panel #match-panel #teams .red, #overlay #scoring-panel #match-panel #teams .blue {
+    position: absolute;
+    height: 120px;
+    width: 50px;
+    bottom: 0px;
+    background-color: white;
+    border-top: 5px solid var(--border-color);
+}
+
+#overlay #scoring-panel #match-panel #teams .red.team-column {
+    right: 0;
+    border-right: 5px solid var(--border-color);
+}
+
+#overlay #scoring-panel #match-panel #teams .blue.team-column {
+    left: 0;
+    border-left: 5px solid var(--border-color);
+}
+
+#overlay #scoring-panel #match-panel #teams .team-column .number {
+    position: relative;
+    height: 40px;
+    line-height: 35px;
+    border-bottom: 5px solid var(--border-color);
+    color: black;
+    text-align: center;
+    font-family: "Roboto Slab";
+    font-weight: bold;
+    font-size: 30px;
+    box-sizing: border-box;
+}
+
+#overlay #scoring-panel #match-panel #teams .red.alliance-number,
+#overlay #scoring-panel #match-panel #teams .blue.alliance-number {
+    position: absolute;
+    height: 45px;
+    width: 40px;
+    top: 0px;
+    color: black;
+    background-color: white;
+    border: 5px solid var(--border-color);
+    text-align: center;
+    font-family: "Roboto Slab";
+    font-weight: bold;
+    font-size: 35px;
+    line-height: 40px;
+}
+
+#overlay #scoring-panel #match-panel #teams .red.alliance-number { right: 0; }
+#overlay #scoring-panel #match-panel #teams .blue.alliance-number { left: 0; }
+
+
+/* Notes */
+#overlay .note-panel {
+    position: relative;
+    width: 340px; height: 85px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+}
+
+#overlay .note-panel.red { flex-direction: row-reverse; align-self: flex-end; }
+#overlay .note-panel.blue { flex-direction: row; align-self: flex-start; }
+
+#overlay .note-panel .note-border {
+    position: relative;
+    bottom: 0;
+    box-sizing: border-box;
+    border: 5px solid black;
+    background-color: white;
+    height: 60px;
+    width: 180px;
+}
+#overlay .red .note-border { left: 0px; }
+#overlay .blue .note-border { left: 0px; }
+
+#overlay .note-icon {
+    position: absolute;
+    height: 100%;
+    width: 55px;
+    background-color: white;
+
+    /* inverted mask */
+    -webkit-mask: url(../../images/eighthnote.svg), linear-gradient(#fff 0 0);
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-composite: destination-out;
+}
+#overlay .red .note-icon { background-color: rgb(233, 13, 13); }
+#overlay .blue .note-icon { background-color: rgb(62, 62, 255); }
+
+#overlay .note-panel .note-count {
+    position: absolute;
+    left: 55px;
+    right: 0px;
+    margin: auto;
+    width: 90px;
+    top: 2px;
+    text-align: center;
+    font-family: "Roboto Slab";
+    color: black;
+    font-size: 32px;
+}
+
+#overlay .coop-indicator {
+    position: relative;
+    height: 60px;
+    width: 60px;
+    background-color: grey;
+    background-image: url(../../images/handshake.svg);
+    background-position: center;
+    background-size: 60px;
+    box-sizing: border-box;
+    border: 5px solid black;
+    border-radius: 60px;
+}
+#overlay .lit.coop-indicator { background-color: goldenrod; }
+
+#overlay .amp-charge {
+    width: 40px; height: 40px;
+    background-color: grey;
+    box-sizing: border-box;
+    border: 5px solid black;
+    border-radius: 60px;
+}
+#overlay .red .lit.amp-charge { background-color: rgb(233, 13, 13); }
+#overlay .blue .lit.amp-charge { background-color: rgb(62, 62, 255); }
+
+#overlay .amp-timer {
+    position: absolute;
+    top: 0;
+    width: 550px; height: 30px;
+    background-color: white;
+    box-sizing: border-box;
+    border: 5px solid black;
+}
+#overlay .amp-timer .bar {
+    position: absolute;
+    width: 0; height: 100%;
+}
+#overlay .red .amp-timer .bar { background-color: rgb(233, 13, 13); right: 0; }
+#overlay .blue .amp-timer .bar { background-color: rgb(62, 62, 255); left: 0; }
+
+/* Auto */
+#overlay .auto-panel {
+    margin-top: 50px;
+    height: 70px;
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+#overlay .auto-panel .leave {
+    height: 60px;
+    width: 60px;
+}
+
+/* Stage */
+#overlay .stage-panel {
+    position: relative;
+    margin-top: 60px;
+    height: 35px;
+    width: 320px;
+}
+
+.stage-panel .stage {
+    position: relative;
+}
+
+.stage-panel .stage .border {
+    position: relative;
+    width: 65px;
+    inset: 0 0 auto 0;
+    margin: 0 auto;
+    border-bottom: 35px solid black;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+}
+.stage-panel .stage .platform {
+    position: absolute;
+    width: 60px;
+    inset: 5px 0 auto 0;
+    margin: 0 auto;
+    border-bottom: 30px solid rgb(170, 170, 170);
+    border-left: 15px solid transparent; /* looks better offset 1px */
+    border-right: 16px solid transparent;
+}
+
+.stage-panel .harmony {
+    position: absolute;
+    width: 50px; height: 30px;
+    left: 80px;
+    background-color: rgb(170, 170, 170);
+    border-top: 5px solid black;
+}
+.stage-panel .harmony.left { left: 80px; }
+.stage-panel .harmony.right { left: 190px; }
+
+.stage-panel .stage .trap {
+    position: absolute;
+    width: 20px; height: 20px;
+    inset: 5px 0 auto 0;
+    margin: 0 auto;
+    border: 5px solid orange;
+    border-radius: 25px;
+}
+
+.stage-panel .robot {
+    display: none;
+    z-index: 1;
+    position: absolute;
+    transform: scale(3);
+    image-rendering: pixelated;
+}
+.stage-panel .robot.park {
+    display: block;
+    transform-origin: bottom left;
+    bottom: -10px;
+    left: -10px;
+}
+.stage-panel .robot.onstage {
+    display: block;
+    transform-origin: bottom center;
+    bottom: 35px;
+    left: 46px;
+}

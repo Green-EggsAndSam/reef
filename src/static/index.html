@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MiniFRC Crescendo FMS</title>
+    <!-- TODO: Content Security Policy -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./common.css">
+    <link rel="stylesheet" type="text/css" href="./match.css">
+    <link rel="stylesheet" type="text/css" href="./results.css">
+    <link rel="stylesheet" type="text/css" href="./rankings.css">
+    <script type="text/javascript" src="../../node_modules/jquery/dist/jquery.js"></script>
+</head>
+
+<body>
+    <div id="match-view">
+        <div id="timer">
+            <div id="bar"></div>
+            <div id="time"></div>
+        </div>
+        <div id="stream">
+            <video autoplay="true"></video>
+        </div>
+
+        <div id="overlay">
+            <div id="scoring-panel">
+
+                <div class="column">
+                    <div class="blue note-panel row">
+                        <div class="note-border">
+                            <div class="note-icon"></div>
+                            <div class="note-count">4/4</div>
+                        </div>
+                        <div class="coop-indicator"></div>
+                        <div class="amp-charge"></div>
+                        <div class="amp-charge"></div>
+                        <div class="amp-timer"><div class="bar"></div></div>
+                    </div>
+
+                    <div class="row">
+                        <div class="blue auto-panel">
+                            <div class="row">
+                                <div class="leave indicator"></div>
+                                <div class="leave indicator"></div>
+                                <div class="leave indicator"></div>
+                            </div>
+                        </div>
+                        <div style="width: 40px"></div>
+                        <div class="blue row stage-panel">
+                            <div class="stage left"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot left" src="../../images/endgame-blue-1.png"/></div>
+                            <div class="stage mid"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot mid" src="../../images/endgame-blue-2.png"/></div>
+                            <div class="stage right"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot right" src="../../images/endgame-blue-3.png"/></div>
+                            <div hidden class="harmony left"></div>
+                            <div hidden class="harmony right"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="match-panel">
+                    <div id="match-name"></div>
+                    <div id="score-box">
+                        <div class="blue">
+                            0
+                        </div>
+                        <div class="red">
+                            0
+                        </div>
+                    </div>
+                    <div id="teams">
+                        <div hidden class="blue alliance-number"></div>
+                        <div class="blue team-column">
+                            <div class="number"></div>
+                            <div class="number"></div>
+                            <div class="number"></div>
+                        </div>
+                        <div hidden class="red alliance-number"></div>
+                        <div class="red team-column">
+                            <div class="number"></div>
+                            <div class="number"></div>
+                            <div class="number"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="red note-panel">
+                        <div class="note-border">
+                            <div class="note-icon"></div>
+                            <div class="note-count">11/15</div>
+                        </div>
+                        <div class="coop-indicator"></div>
+                        <div class="amp-charge"></div>
+                        <div class="amp-charge"></div>
+                        <div class="amp-timer"><div class="bar"></div></div>
+                    </div>
+
+                    <div class="red row">
+                        <div class="red auto-panel">
+                            <div class="red row">
+                                <div class="leave indicator"></div>
+                                <div class="leave indicator"></div>
+                                <div class="leave indicator"></div>
+                            </div>
+                        </div>
+                        <div style="width: 30px"></div>
+                        <div class="red row stage-panel">
+                            <div class="stage left"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot left" src="../../images/endgame-red-1.png"/></div>
+                            <div class="stage mid"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot mid" src="../../images/endgame-red-2.png"/></div>
+                            <div class="stage right"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot right" src="../../images/endgame-red-3.png"/></div>
+                            <div hidden class="harmony left"></div>
+                            <div hidden class="harmony right"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <div id="results-view">
+        <video>
+            <source type="video/mp4"/>
+        </video>
+        <div id="frame">
+            <div id="match-label"></div>
+            <div id="panels">
+                <div class="blue alliance-panel">
+                    <div class="overview">
+                        <div class="teams">
+                            <div class="labels">
+                                <div class="team-label">Team</div>
+                                <div class="rank-label">Rank</div>
+                            </div>
+                            <div class="team">
+                                <div class="number">-</div>
+                                <div class="avatar"></div>
+                                <div class="rank">-</div>
+                            </div>
+                            <div class="team">
+                                <div class="number">-</div>
+                                <div class="avatar"></div>
+                                <div class="rank">-</div>
+                            </div>
+                            <div class="team">
+                                <div class="number">-</div>
+                                <div class="avatar"></div>
+                                <div class="rank">-</div>
+                            </div>
+                        </div>
+                        <div class="score-panel">
+                            <div class="high-score"></div>
+                            <div class="score">-</div>
+                            <div class="result"></div>
+                        </div>
+                    </div>
+                    <div class="details">
+                        <div class="rp-panel">
+                            <div class="count">- RP</div>
+                            <div class="melody indicator"><img></div>
+                            <div class="ensemble indicator"><img></div>
+                            <div class="win indicator">
+                                <img id="tie" src="../../images/tie-icon.png" hidden>
+                                <img id="win">
+                            </div>
+                        </div>
+                        <div class="category-panel">
+                            <div class="category">
+                                <div class="label">Leave</div>
+                                <div class="points">0</div>
+                            </div>
+                            <div class="category">
+                                <div class="label">Amp</div>
+                                <div class="points">0</div>
+                            </div>
+                            <div class="category">
+                                <div class="label">Speaker</div>
+                                <div class="points">0</div>
+                            </div>
+                            <div class="category">
+                                <div class="label">Stage</div>
+                                <div class="points">0</div>
+                            </div>
+                            <div class="category">
+                                <div class="label">Red Penalty</div>
+                                <div class="points">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="red alliance-panel">
+                    <div class="overview">
+                        <div class="teams">
+                            <div class="labels">
+                                <div class="team-label">Team</div>
+                                <div class="rank-label">Rank</div>
+                            </div>
+                            <div class="team">
+                                <div class="number">-</div>
+                                <div class="avatar"></div>
+                                <div class="rank">-</div>
+                            </div>
+                            <div class="team">
+                                <div class="number">-</div>
+                                <div class="avatar"></div>
+                                <div class="rank">-</div>
+                            </div>
+                            <div class="team">
+                                <div class="number">-</div>
+                                <div class="avatar"></div>
+                                <div class="rank">-</div>
+                            </div>
+                        </div>
+                        <div class="score-panel">
+                            <div class="high-score"></div>
+                            <div class="score">-</div>
+                            <div class="result"></div>
+                        </div>
+                    </div>
+                    <div class="details">
+                        <div class="rp-panel">
+                            <div class="count">- RP</div>
+                            <div class="melody indicator"><img></div>
+                            <div class="ensemble indicator"><img></div>
+                            <div class="win indicator">
+                                <img id="tie" src="../../images/tie-icon.png" hidden>
+                                <img id="win">
+                            </div>
+                        </div>
+                        <div class="category-panel">
+                            <div class="category">
+                                <div class="label">Leave</div>
+                                <div class="points">0</div>
+                            </div>
+                            <div class="category">
+                                <div class="label">Amp</div>
+                                <div class="points">0</div>
+                            </div>
+                            <div class="category">
+                                <div class="label">Speaker</div>
+                                <div class="points">0</div>
+                            </div>
+                            <div class="category">
+                                <div class="label">Stage</div>
+                                <div class="points">0</div>
+                            </div>
+                            <div class="category">
+                                <div class="label">Blue Penalty</div>
+                                <div class="points">0</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="rankings-view">
+        <div id="frame">
+            <div class="title">Rankings</div>
+            <div class="container">
+                <table>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Team</th>
+                        <th>Ranking<br/>Score</th>
+                        <th>Auto</th>
+                        <th>Stage</th>
+                        <th>Record<br />(W-L-T)</th>
+                        <th>DQs</th>
+                        <th>Played</th>
+                        <th>Ranking<br/>Points</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="sound" hidden>
+        <audio id="start-match" src="../../sounds/auto.wav" type="audio/wav"></audio>
+        <audio id="start-teleop" src="../../sounds/teleop.wav" type="audio/wav"></audio>
+        <audio id="start-amplification" src="../../sounds/amp.wav" type="audio/wav"></audio>
+        <audio id="end-amplification" src="../../sounds/ampend.wav" type="audio/wav"></audio>
+        <audio id="start-endgame" src="../../sounds/endgame.wav" type="audio/wav"></audio>
+        <audio id="end-match" src="../../sounds/end.wav" type="audio/wav"></audio>
+        <audio id="field-fault" src="../../sounds/fault.wav" type="audio/wav"></audio>
+        <audio id="show-results" src="../../sounds/show-results.wav" type="audio/wav"></audio>
+        <audio id="results-video" src="../../sounds/results-video.mp3" type="audio/mp3"></audio>
+    </div>
+
+    <script src="../renderer/index.js" type="module"></script>
+</body>
+
+</html>
