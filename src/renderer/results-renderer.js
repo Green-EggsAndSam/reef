@@ -89,14 +89,17 @@ function updateScorePanel(alliance) {
 }
 
 function updateRpPanel(alliance) {
-    let melody = $("#results-view " + getAllianceClass(alliance) + ".alliance-panel .rp-panel .melody");
-    let ensemble = $("#results-view " + getAllianceClass(alliance) + ".alliance-panel .rp-panel .ensemble");
+    let coralRP = $("#results-view " + getAllianceClass(alliance) + ".alliance-panel .rp-panel .coralRP");
+    let autoRP = $("#results-view " + getAllianceClass(alliance) + ".alliance-panel .rp-panel .autoRP");
+    let bargeRP = $("#results-view " + getAllianceClass(alliance) + ".alliance-panel .rp-panel .bargeRP");
     let win = $("#results-view " + getAllianceClass(alliance) + ".alliance-panel .rp-panel .win");
-    let rp = (alliance.melody ? 1 : 0) + (alliance.ensemble ? 1 : 0);
-    if (alliance.melody) melody.addClass("lit");
-    else melody.removeClass("lit");
-    if (alliance.ensemble) ensemble.addClass("lit");
-    else ensemble.removeClass("lit");
+    let rp = (alliance.coralRP ? 1 : 0) + (alliance.autoRP ? 1 : 0) + (alliance.bargeRP ? 1 : 0);
+    if (alliance.coralRP) coralRP.addClass("lit");
+    else coralRP.removeClass("lit");
+    if (alliance.autoRP) autoRP.addClass("lit");
+    else autoRP.removeClass("lit");
+    if (alliance.bargeRP) bargeRP.addClass("lit");
+    else bargeRP.removeClass("lit");
     if ((alliance.color == Match.AllianceColor.RED && Competition.results.result == Match.Result.RED_WIN)
             || (alliance.color == Match.AllianceColor.BLUE && Competition.results.result == Match.Result.BLUE_WIN)) {
         rp += 2;
@@ -116,7 +119,7 @@ function updateRpPanel(alliance) {
 
 function updateCategoryPanel(alliance) {
     let categories = $("#results-view " + getAllianceClass(alliance) + ".alliance-panel .category-panel .category .points");
-    [alliance.leavePoints, alliance.ampPoints, alliance.speakerPoints, alliance.stagePoints, alliance.penaltyPoints].forEach(
+    [alliance.leavePoints, alliance.coralPoints, alliance.algaePoints, alliance.bargePoints, alliance.penaltyPoints].forEach(
         (e, i) => categories.eq(i).text(e)
     );
 }

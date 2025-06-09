@@ -83,21 +83,14 @@ export class Match {
             AUTO_CORAL_L3: 6,
             CORAL_L4: 5,
             AUTO_CORAL_L4: 7,
-            ALGAE_PROCESSOR: 6,
-            ALGAE_NET: 4,
-            PARK: 2,
-            SHALLOW: 6,
-            DEEP: 12,
 
-            AUTO_AMP: 2,
-            AUTO_SPEAKER: 5,
-            AMP: 1,
-            SPEAKER: 2,
-            AMPED_SPEAKER: 5,
-            PARK: 1,
-            ONSTAGE: 3,
-            TRAP: 5,
-            HARMONY: 2,
+            ALGAE_PROCESSOR: 4,
+            ALGAE_NET: 5,
+            ALGAE_ABYSS : 3,
+
+            PARK: 2,
+            DEEP: 8,
+
             FOUL: 2,
             TECH_FOUL: 5
         }
@@ -327,8 +320,10 @@ export class Match {
         /** @type {number} */    coralL4 = 0;
         /** @type {number} */    algaeProcessor = 0;
         /** @type {number} */    algaeNet = 0;
+        /** @type {number} */    algaeAbyss = 0;
+
         /** @type {boolean} */   coopertition = false;
-        /** @type {number[]} */  barge = [0, 0, 0]; // Point values of completed endgame tasks
+        /** @type {number[]} */  barge = [0,0]; // Point values of completed endgame tasks
         /** @type {number} */    fouls = 0; // Awarded to this alliance, committed by opponent
         /** @type {number} */    techFouls = 0; // Awarded to this alliance, committed by opponent
 
@@ -342,55 +337,71 @@ export class Match {
         addAlgaeNet()    { this.algaeNet++};
         removeAlgaeNet() { if (this.algaeNet > 0) { this.algaeNet--}};
 
+         addAlgae()    { this.algaeNet++};
+        removeAlgaeNet() { if (this.algaeNet > 0) { this.algaeNet--}};
 
         addAutoCoralL1()      { this.autoCoralL1++; };
         removeAutoCoralL1()   { if (this.autoCoralL1 > 0) this.autoCoralL1--; };
         addTeleopCoralL1()    { this.coralL1++; };
         removeTeleopCoralL1() { if (this.coralL1 > 0) this.coralL1--; };
-        addAmpedSpeakerNote()     { this.ampedSpeakerNotes++; if (--this.notesToAmpExpiry == 0) this.endAmplification(); };
-        removeAmpedSpeakerNote()  { if (this.ampedSpeakerNotes > 0) { this.ampedSpeakerNotes--; this.notesToAmpExpiry++; } };
-        addSpeakerNote() {
-            if (Competition.inAuto) this.addAutoSpeakerNote();
-            else if (this.isAmplified) this.addAmpedSpeakerNote(); 
-            else this.addTeleopSpeakerNote();
+
+        addAutoCoralL2()      { this.autoCoralL2++; };
+        removeAutoCoralL2()   { if (this.autoCoralL2 > 0) this.autoCoralL2--; };
+        addTeleopCoralL2()    { this.coralL2++; };
+        removeTeleopCoralL2() { if (this.coralL2 > 0) this.coralL2--; };
+
+        addAutoCoralL3()      { this.autoCoralL3++; };
+        removeAutoCoralL3()   { if (this.autoCoralL3 > 0) this.autoCoralL3--; };
+        addTeleopCoralL3()    { this.coralL3++; };
+        removeTeleopCoralL3() { if (this.coralL3 > 0) this.coralL3--; };
+
+        addAutoCoralL4()      { this.autoCoralL4++; };
+        removeAutoCoralL4()   { if (this.autoCoralL4 > 0) this.autoCoralL4--; };
+        addTeleopCoralL4()    { this.coralL4++; };
+        removeTeleopCoralL4() { if (this.coralL4 > 0) this.coralL4--; };
+
+
+        addCoralL1() {
+            if (Competition.inAuto) this.addAutoCoralL1();
+            else this.addTeleopCoralL1();
         };
-        removeSpeakerNote()        {
-            if (Competition.inAuto) this.removeAutoSpeakerNote();
-            else if (this.isAmplified) this.removeAmpedSpeakerNote(); 
-            else this.removeTeleopSpeakerNote();
+        removeCoralL1()        {
+            if (Competition.inAuto) this.removeAutoCoralL1();
+            else this.removeTeleopCoralL1();
         }
 
-        endAmplification() {
-            this.ampCharge = 0;
-            this.notesToAmpExpiry = 4;
-            clearTimeout(this.amplificationTimeoutId);
-            this.amplificationTimestamp = -1;
-            sound.endAmplification();
-        }
-        startAmplification() {
-            if (this.ampCharge < 2) return;
-            this.ampCharge = 0;
-            this.notesToAmpExpiry = 4;
-            this.amplificationTimeoutId = setTimeout(this.endAmplification.bind(this), 10000);
-            this.amplificationTimestamp = Date.now();
-            sound.startAmplification();
-        }
-        get isAmplified() {
-            return this.amplificationTimestamp >= 0;
-        }
-        /** Percentage of duration remaining, from 0 to 1.  */
-        get ampDurationRemaining () {
-            return 1 - Math.max(0, Math.min(1, (Date.now() - this.amplificationTimestamp) / 10000));
+                addCoralL2() {
+            if (Competition.inAuto) this.addAutoCoralL2();
+            else this.addTeleopCoralL2();
+        };
+        removeCoralL2()        {
+            if (Competition.inAuto) this.removeAutoCoralL2();
+            else this.removeTeleopCoralL2();
         }
 
-        setStage(pos, pts) { this.stage[pos] = pts; }
-        setTrapNote(pos, bool) { this.trapNotes[pos] = bool; }
-        setHarmony(count) { this.harmony = count; }
+                addCoralL3() {
+            if (Competition.inAuto) this.addAutoCoralL3();
+            else this.addTeleopCoralL3();
+        };
+        removeCoralL3()        {
+            if (Competition.inAuto) this.removeAutoCoralL3();
+            else this.removeTeleopCoralL3();
+        }
+
+                addCoralL4() {
+            if (Competition.inAuto) this.addAutoCoralL4();
+            else this.addTeleopCoralL4();
+        };
+        removeCoralL4()        {
+            if (Competition.inAuto) this.removeAutoCoralL4();
+            else this.removeTeleopCoralL4();
+        }
+
+        setBarge(pos, pts) { this.barge[pos] = pts; }
 
         setCoopertition() {
-            if (Competition.inMatch && Competition.matchMillisElapsed < 45000 && this.ampCharge >= 1 && !this.coopertition) {
+            if (Competition.inMatch && this.algaeProcessor >= 2 && !this.coopertition) {
                 this.coopertition = true;
-                this.useAmpCharge();
             }
         }
         setCoopertitionForce(bool) { this.coopertition = bool; }
@@ -407,61 +418,74 @@ export class Match {
 
         get matchPoints() {
             return this.leavePoints
-                + this.ampPoints
-                + this.speakerPoints
-                + this.stagePoints
+                + this.coralPoints
+                + this.algaePoints
+                + this.bargePoints
                 + this.penaltyPoints;
         }
 
         get leavePoints() {
             return this.leaves * Match.PointValues.LEAVE;
         }
-        get autoNotePoints() {
-            return this.autoAmpNotes * Match.PointValues.AUTO_AMP
-                + this.autoSpeakerNotes * Match.PointValues.AUTO_SPEAKER;
-        }
-        get autoPoints() {
-            return this.leavePoints + this.autoNotePoints;
-        }
-
-        get ampPoints() {
-            return this.autoAmpNotes * Match.PointValues.AUTO_AMP
-                + this.ampNotes * Match.PointValues.AMP;
-        }
-        get speakerPoints() {
-            return this.autoSpeakerNotes * Match.PointValues.AUTO_SPEAKER
-                + this.speakerNotes * Match.PointValues.SPEAKER
-                + this.ampedSpeakerNotes * Match.PointValues.AMPED_SPEAKER;
+        get coralPoints() {
+            return this.autoCoralL1 * Match.PointValues.AUTO_CORAL_L1
+                + this.coralL1 * Match.PointValues.CORAL_L1
+                + this.autoCoralL2 * Match.PointValues.AUTO_CORAL_L2
+                + this.coralL2 * Match.PointValues.CORAL_L2
+                + this.autoCoralL3 * Match.PointValues.AUTO_CORAL_L3
+                + this.coralL3 * Match.PointValues.CORAL_L3
+                + this.autoCoralL4 * Match.PointValues.AUTO_CORAL_L4
+                + this.coralL4 * Match.PointValues.CORAL_L4;
         }
 
-        get stagePoints() {
-            return this.stage.reduce((sum, pts) => sum + pts, 0)
-                + this.trapNotes.reduce((sum, pts) => sum + pts, 0) * Match.PointValues.TRAP
-                + this.harmony * Match.PointValues.HARMONY;
+        get algaePoints() {
+            return this.algaeProcessor * Match.PointValues.ALGAE_PROCESSOR
+                + this.algaeNet * Match.PointValues.ALGAE_NET
+                + this.algaeAbyss * Match.PointValues.ALGAE_ABYSS;
+        }
+
+        get bargePoints() {
+            return this.barge.reduce((sum, pts) => sum + pts, 0);
         }
 
         get penaltyPoints() {
             return this.fouls * Match.PointValues.FOUL
                 + this.techFouls * Match.PointValues.TECH_FOUL;
         }
-
-        get notes() {
-            return this.autoAmpNotes + this.autoSpeakerNotes
-                + this.ampNotes + this.speakerNotes + this.ampedSpeakerNotes;
-        }
+        
         get coopBonus() {
             return this.#match.#red.coopertition && this.#match.#blue.coopertition;
         }
-        get melodyThreshold() {
-            return this.coopBonus ? 12 : 15;
-        }
-        get melody() {
-            return this.notes >= this.melodyThreshold;
-        }
-        get ensemble() {
-            return this.stagePoints >= 9;
+
+        get autoRP() {
+            return this.leaves >= 3 &&
+             (this.autoCoralL1 + this.autoCoralL2 + this.autoCoralL3 + this.autoCoralL4) >= 1;
         }
 
+        get coralRPThreshold() {
+             return this.coopBonus ? 3 : 4;
+        }
+
+        get filledCoralLevels() {
+            let fill = 0;
+            if (this.coralL1 + this.autoCoralL1 >= 3) fill++;
+            if (this.coralL2 + this.autoCoralL2 >= 3) fill++;
+            if (this.coralL3 + this.autoCoralL3 >= 3) fill++;
+            if (this.coralL4 + this.autoCoralL4 >= 3) fill++;
+            return fill;
+        }
+
+        get algae() {
+            return this.algaeProcessor + this.algaeNet + this.algaeAbyss;
+        }
+
+        get coralRP() {
+            return this.filledCoralLevels >= this.coralRPThreshold;
+        }
+
+        get bargeRP() {
+            return this.bargePoints >= 10;
+        }
         /**
          * @param {number[]} teams 
          * @param {Match.AllianceColor} color 
@@ -476,15 +500,19 @@ export class Match {
             if (match.isPlayoff()) this.#number = repository.getAllianceNumber(...this.#match.#id, this.color);
 
             this.leaves            = repository.getLeaves(...this.#match.#id, this.color);
-            this.autoAmpNotes      = repository.getAutoAmpNotes(...this.#match.#id, this.color);
-            this.autoSpeakerNotes  = repository.getAutoSpeakerNotes(...this.#match.#id, this.color);
-            this.ampNotes          = repository.getAmpNotes(...this.#match.#id, this.color);
-            this.speakerNotes      = repository.getSpeakerNotes(...this.#match.#id, this.color);
-            this.ampedSpeakerNotes = repository.getAmpedSpeakerNotes(...this.#match.#id, this.color);
+            this.autoCoralL1      = repository.getAutoCoralL1(...this.#match.#id, this.color);
+            this.autoCoralL2      = repository.getAutoCoralL2(...this.#match.#id, this.color)
+            this.autoCoralL3      = repository.getAutoCoralL3(...this.#match.#id, this.color);
+            this.autoCoralL4      = repository.getAutoCoralL4(...this.#match.#id, this.color);
+            this.coralL1          = repository.getCoralL1(...this.#match.#id, this.color);
+            this.coralL2          = repository.getCoralL2(...this.#match.#id, this.color);
+            this.coralL3          = repository.getCoralL3(...this.#match.#id, this.color);
+            this.coralL4          = repository.getCoralL4(...this.#match.#id, this.color);
+            this.algaeProcessor  = repository.getAlgaeProcessor(...this.#match.#id, this.color);
+            this.barge          = repository.getbarge(...this.#match.#id, this.color);
+            this.algaeNet         = repository.getAlgaeNet(...this.#match.#id, this.color);
+            this.algaeAbyss       = repository.getAlgaeAbyss(...this.#match.#id, this.color);
             this.coopertition      = repository.getCoopertition(...this.#match.#id, this.color);
-            this.stage             = repository.getStage(...this.#match.#id, this.color);
-            this.trapNotes         = repository.getTrapNotes(...this.#match.#id, this.color);
-            this.harmony           = repository.getHarmony(...this.#match.#id, this.color);
             this.fouls             = repository.getFouls(...this.#match.#id, this.color);
             this.techFouls         = repository.getTechFouls(...this.#match.#id, this.color);
         }
@@ -492,34 +520,41 @@ export class Match {
         save() {
             repository.setMatchPoints(this.matchPoints, ...this.#match.#id, this.color);
             repository.setLeaves(this.leaves, ...this.#match.#id, this.color);
-            repository.setAutoAmpNotes(this.autoAmpNotes, ...this.#match.#id, this.color);
-            repository.setAutoSpeakerNotes(this.autoSpeakerNotes, ...this.#match.#id, this.color);
-            repository.setAmpNotes(this.ampNotes, ...this.#match.#id, this.color);
-            repository.setSpeakerNotes(this.speakerNotes, ...this.#match.#id, this.color);
-            repository.setAmpedSpeakerNotes(this.ampedSpeakerNotes, ...this.#match.#id, this.color);
+            repository.setAutoCoralL1(this.autoCoralL1, ...this.#match.#id, this.color);
+            repository.setAutoCoralL2(this.autoCoralL2, ...this.#match.#id, this.color);
+            repository.setAutoCoralL3(this.autoCoralL3, ...this.#match.#id, this.color);
+            repository.setAutoCoralL4(this.autoCoralL4, ...this.#match.#id, this.color);
+            repository.setCoralL1(this.coralL1, ...this.#match.#id, this.color);
+            repository.setCoralL2(this.coralL2, ...this.#match.#id, this.color);
+            repository.setCoralL3(this.coralL3, ...this.#match.#id, this.color);
+            repository.setCoralL4(this.coralL4, ...this.#match.#id, this.color);
+            repository.setAlgaeProcessor(this.algaeProcessor, ...this.#match.#id, this.color);
+            repository.setAlgaeNet(this.algaeNet, ...this.#match.#id, this.color);
+            repository.setAlgaeAbyss(this.algaeAbyss, ...this.#match.#id, this.color);
+            repository.setBarge(this.barge, ...this.#match.#id, this.color);
             repository.setCoopertition(this.coopertition, ...this.#match.#id, this.color);
-            repository.setStage(this.stage, ...this.#match.#id, this.color);
-            repository.setTrapNotes(this.trapNotes, ...this.#match.#id, this.color);
-            repository.setHarmony(this.harmony, ...this.#match.#id, this.color);
             repository.setFouls(this.fouls, ...this.#match.#id, this.color);
             repository.setTechFouls(this.techFouls, ...this.#match.#id, this.color);
-            repository.setMelody(this.melody, ...this.#match.#id, this.color);
-            repository.setEnsemble(this.ensemble, ...this.#match.#id, this.color);
+            repository.setAutoRP(this.autoRP, ...this.#match.#id, this.color);
+            repository.setCoralRP(this.coralRP, ...this.#match.#id, this.color);
+            repository.setBargeRP(this.bargeRP, ...this.#match.#id, this.color);
         }
         
         clear() {
             leaves = 0;
-            autoAmpNotes = 0;
-            autoSpeakerNotes = 0;
-            ampNotes = 0;
-            ampCharge = 0;
-            speakerNotes = 0;
-            ampedSpeakerNotes = 0;
-            notesToAmpExpiry = 4;
+            autoCoralL1 = 0;
+            autoCoralL2 = 0;
+            autoCoralL3 = 0;
+            autoCoralL4 = 0;
+            coralL1 = 0;
+            coralL2 = 0;
+            coralL3 = 0;
+            coralL4 = 0;
+            algaeProcessor = 0;
+            algaeNet = 0;
+            algaeAbyss = 0;
+            barge = [0, 0];
             coopertition = false;
-            stage = [0, 0, 0];
-            trapNotes = [false, false, false];
-            harmony = 0;
             fouls = 0;
             techFouls = 0;
         }

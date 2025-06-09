@@ -32,7 +32,7 @@ function updateRankings() {
         row.append($("<td>" + e.number + "</td>"));
         row.append($("<td>" + (isNaN(e.rankingScore) ? "-" : e.rankingScore.toFixed(2)) + "</td>"));
         row.append($("<td>" + e.autoPoints + "</td>"));
-        row.append($("<td>" + e.stagePoints + "</td>"));
+        row.append($("<td>" + e.bargePoints + "</td>"));
         row.append($("<td class='text'>" + e.wins + "-" + e.losses + "-" + e.ties + "</td>"));
         row.append($("<td>" + e.disqualifications + "</td>"));
         row.append($("<td>" + e.matchesPlayed + "</td>"));

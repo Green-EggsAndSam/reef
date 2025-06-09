@@ -14,7 +14,8 @@ export class Team {
 
     #rankingPoints;
     #autoPoints;
-    #stagePoints;
+    #bargePoints;
+    #coopertitionPoints;
     #wins;
     #ties;
     #losses;
@@ -40,7 +41,7 @@ export class Team {
         matches = matches.filter(match => match.teamNumbers.includes(this.number) && !match.isSurrogate(this.number));
         this.#rankingPoints = 0;
         this.#autoPoints = 0;
-        this.#stagePoints = 0;
+        this.#bargePoints = 0;
         this.#wins = 0;
         this.#ties = 0;
         this.#losses = 0;
@@ -51,7 +52,7 @@ export class Team {
             } else {
                 if (match.red.teamNumbers.includes(this.number)) {
                     if (match.result == Match.Result.RED_WIN) {
-                        this.#rankingPoints += 2;
+                        this.#rankingPoints += 3;
                         this.#wins++;
                     } else if (match.result == Match.Result.TIE) {
                         this.#rankingPoints += 1;
@@ -59,13 +60,16 @@ export class Team {
                     } else {
                         this.#losses++;
                     }
-                    if (match.red.ensemble) this.#rankingPoints += 1;
-                    if (match.red.melody) this.#rankingPoints += 1;
+                    if (match.red.coralRP) this.#rankingPoints += 1;
+                    if (match.red.autoRP) this.#rankingPoints += 1;
+                    if (match.red.bargeRP) this.#rankingPoints += 1;
+                    if (match.red.coopBonus) this.#coopertitionPoints += 1;
                     this.#autoPoints += match.red.autoPoints;
-                    this.#stagePoints += match.red.stagePoints;
+                    this.#bargePoints += match.red.bargePoints;
+
                 } else if (match.blue.teamNumbers.includes(this.number)) {
                     if (match.result == Match.Result.BLUE_WIN) {
-                        this.#rankingPoints += 2;
+                        this.#rankingPoints += 3;
                         this.#wins++;
                     } else if (match.result == Match.Result.TIE) {
                         this.#rankingPoints += 1;
@@ -73,10 +77,12 @@ export class Team {
                     } else {
                         this.#losses++;
                     }
-                    if (match.blue.ensemble) this.#rankingPoints += 1;
-                    if (match.blue.melody) this.#rankingPoints += 1;
+                    if (match.blue.coralRP) this.#rankingPoints += 1;
+                    if (match.blue.autoRP) this.#rankingPoints += 1;
+                    if (match.blue.bargeRP) this.#rankingPoints += 1;
+                    if (match.blue.coopBonus) this.#coopertitionPoints += 1;
                     this.#autoPoints += match.blue.autoPoints;
-                    this.#stagePoints += match.blue.stagePoints;
+                    this.#bargePoints += match.blue.bargePoints;
                 }
             }
         });
@@ -94,8 +100,8 @@ export class Team {
     get autoPoints() {
         return this.#autoPoints;
     }
-    get stagePoints() {
-        return this.#stagePoints;
+    get bargePoints() {
+        return this.#bargePoints;
     }
 
     get wins() {

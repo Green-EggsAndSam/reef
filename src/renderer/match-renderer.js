@@ -20,9 +20,8 @@ export function update() {
         [match.red, match.blue].forEach(alliance =>
             updateMatchPanel(
                 match.friendlyName, alliance.teamNumbers, alliance.number, match.isPlayoff(),
-                alliance.matchPoints, alliance.leaves,
-                alliance.notes, alliance.melodyThreshold, alliance.ampCharge, alliance.ampDurationRemaining, alliance.coopertition,
-                alliance.stage, alliance.trapNotes, alliance.harmony, alliance.color
+                alliance.matchPoints, alliance.filledCoralLevels,
+                alliance.algae, alliance.coralRPThreshold, alliance.color
             )
         );
     }
@@ -31,16 +30,14 @@ export function update() {
 // Separated to allow rendering match panel in control window
 export function updateMatchPanel(
     matchName, teams, number, isPlayoff,
-    matchPoints, leaves,
-    notes, melodyThreshold, ampCharge, ampDurationRemaining, coopertition,
-    stage, trapNotes, harmony, color
+    matchPoints, filledCoralLevels,
+    algae, coralRPThreshold, color
 ) {
     updateMatchName(matchName);
     updateTeams(...teams, number, isPlayoff, color);
     updateMatchPoints(matchPoints, color);
-    updateAutonomous(leaves, color);
-    updateNotes(notes, melodyThreshold, coopertition, ampCharge, ampDurationRemaining, color);
-    updateStage(stage, trapNotes, harmony, color);
+    updateCoralLevels(filledCoralLevels, coralRPThreshold, color);
+    updateAlgae(algae, color);
 }
 
 export function startVideo() {
@@ -98,29 +95,25 @@ function updateAutonomous(leaves, color) {
     });
 }
 
-function updateNotes(notes, melodyThreshold, coopertition, ampCharge, ampDurationRemaining, color) {
-    $(`#match-view ${getColorClass(color)}.note-panel .note-count`).text(`${notes}/${melodyThreshold}`);
-    if (coopertition) $(`#match-view ${getColorClass(color)}.note-panel .coop-indicator`).addClass("lit");
-    else $(`#match-view ${getColorClass(color)}.note-panel .coop-indicator`).removeClass("lit");
-    
-    $(`#match-view ${getColorClass(color)}.note-panel .amp-charge`).each((i, e) => {
-        if (i < ampCharge) $(e).addClass("lit");
-        else $(e).removeClass("lit");
-    });
-    $(`#match-view ${getColorClass(color)}.note-panel .amp-timer .bar`).width(`${ampDurationRemaining * 100}%`)
+function updateCoralLevels(filledCoralLevels, coralRPThreshold, color) {
+    $(`#match-view ${getColorClass(color)}.coral-panel .coral-count`).text(`${filledCoralLevels}/${coralRPThreshold}`);
 }
 
-function updateStage(stage, trapNotes, harmony, color) {
-    $(`#match-view ${getColorClass(color)}.stage-panel .robot`).each((i, e) => {
+function updateAlgae(algae, color) {
+    $('#match-view ' + getColorClass(color) + '.algae-panel .coral-count').text(algae);
+}
+
+function updateStage(barge, trapNotes, harmony, color) {
+    $(`#match-view ${getColorClass(color)}.barge-panel .robot`).each((i, e) => {
         $(e).removeClass("park onstage");
-        if (stage[i] == Match.PointValues.PARK) $(e).addClass("park");
-        else if (stage[i] == Match.PointValues.ONSTAGE) $(e).addClass("onstage");
+        if (barge[i] == Match.PointValues.PARK) $(e).addClass("park");
+        else if (barge[i] == Match.PointValues.ONSTAGE) $(e).addClass("onstage");
     });
-    $(`#match-view ${getColorClass(color)}.stage-panel .trap`).each((i, e) => {
+    $(`#match-view ${getColorClass(color)}.barge-panel .trap`).each((i, e) => {
         if (trapNotes[i]) $(e).show();
         else $(e).hide();
     });
-    $(`#match-view ${getColorClass(color)}.stage-panel .harmony`).each((i, e) => {
+    $(`#match-view ${getColorClass(color)}.barge-panel .harmony`).each((i, e) => {
         if (i < harmony) $(e).show();
         else $(e).hide();
     });
