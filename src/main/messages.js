@@ -13,13 +13,14 @@ let CtrlMsg = {
     PREVIOUS_MATCH:             "previous-match",
 
     LEAVE:                      "leave",        // Params: { red: bool, count: 0-3 }
-    HARMONY:                    "harmony",      // Params: { red: bool, count: 0-2 }
-    STAGE:                      "stage",        // Params: { red: bool, position: 0-2, level: 0-2 = (none, park, onstage) }
-    TRAP:                       "trap",         // Params: { red: bool, position: 0-2, undo: bool }
-    SPEAKER:                    "speaker",      // Params: { red: bool, type: string (context, auto, amped, unamped), undo: bool }
-    AMP:                        "amp",          // Params: { red: bool, type: string (context, auto), undo: bool }
-    AMPLIFY:                    "amplify",      // Params: { red: bool }
-    COOP:                       "coop",         // Params: { red: bool, force: bool, undo: bool }
+    BARGE:                      "barge",        // Params: { red: bool, position: 0-2, level: 0-2 = (none, park, deep) }
+    CORALL1:                    "coralL1",       // Params: { red: bool, type: string (context, auto, tele), undo: bool }
+    CORALL2:                    "coralL2",       // Params: { red: bool, type: string (context, auto, tele), undo: bool }
+    CORALL3:                    "coralL3",       // Params: { red: bool, type: string (context, auto, tele), undo: bool }
+    CORALL4:                    "coralL4",       // Params: { red: bool, type: string (context, auto, tele), undo: bool }
+    PROCESSOR:                  "processor",    // Params:  Params: { red: bool, type: string (context), undo: bool }
+    NET:                        "net",          // Params:  Params: { red: bool, type: string (context), undo: bool }
+    ABYSS:                      "abyss",        // Params: { red: bool, type: string (context), undo: bool }
     FOUL:                       "foul",         // Params: { red: bool, tech: bool, undo: bool }
 }
 

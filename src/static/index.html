@@ -26,15 +26,12 @@
             <div id="scoring-panel">
 
                 <div class="column">
-                    <div class="blue note-panel row">
-                        <div class="note-border">
-                            <div class="note-icon"></div>
-                            <div class="note-count">4/4</div>
+                    <div class="blue coral-panel row">
+                        <div class="coral-border">
+                            <div class="coral-icon"></div>
+                            <div class="coral-count">4/4</div>
                         </div>
                         <div class="coop-indicator"></div>
-                        <div class="amp-charge"></div>
-                        <div class="amp-charge"></div>
-                        <div class="amp-timer"><div class="bar"></div></div>
                     </div>
 
                     <div class="row">
@@ -46,12 +43,10 @@
                             </div>
                         </div>
                         <div style="width: 40px"></div>
-                        <div class="blue row stage-panel">
-                            <div class="stage left"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot left" src="../../images/endgame-blue-1.png"/></div>
-                            <div class="stage mid"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot mid" src="../../images/endgame-blue-2.png"/></div>
-                            <div class="stage right"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot right" src="../../images/endgame-blue-3.png"/></div>
-                            <div hidden class="harmony left"></div>
-                            <div hidden class="harmony right"></div>
+                        <div class="blue row barge-panel">
+                            <div class="barge left"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot left" src="../../images/endgame-blue-1.png"/></div>
+                            <div class="barge mid"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot mid" src="../../images/endgame-blue-2.png"/></div>
+                            <div class="barge right"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot right" src="../../images/endgame-blue-3.png"/></div>
                         </div>
                     </div>
                 </div>
@@ -83,10 +78,10 @@
                 </div>
 
                 <div class="column">
-                    <div class="red note-panel">
-                        <div class="note-border">
-                            <div class="note-icon"></div>
-                            <div class="note-count">11/15</div>
+                    <div class="red coral-border">
+                        <div class="coral-border-border">
+                            <div class="coral-border-icon"></div>
+                            <div class="coral-border-count">11/15</div>
                         </div>
                         <div class="coop-indicator"></div>
                         <div class="amp-charge"></div>
@@ -103,12 +98,10 @@
                             </div>
                         </div>
                         <div style="width: 30px"></div>
-                        <div class="red row stage-panel">
-                            <div class="stage left"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot left" src="../../images/endgame-red-1.png"/></div>
-                            <div class="stage mid"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot mid" src="../../images/endgame-red-2.png"/></div>
-                            <div class="stage right"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot right" src="../../images/endgame-red-3.png"/></div>
-                            <div hidden class="harmony left"></div>
-                            <div hidden class="harmony right"></div>
+                        <div class="red row barge-panel">
+                            <div class="barge left"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot left" src="../../images/endgame-red-1.png"/></div>
+                            <div class="barge mid"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot mid" src="../../images/endgame-red-2.png"/></div>
+                            <div class="barge right"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot right" src="../../images/endgame-red-3.png"/></div>
                         </div>
                     </div>
                 </div>
@@ -156,8 +149,9 @@
                     <div class="details">
                         <div class="rp-panel">
                             <div class="count">- RP</div>
-                            <div class="melody indicator"><img></div>
-                            <div class="ensemble indicator"><img></div>
+                            <div class="coralRP indicator"><img></div>
+                            <div class="autoRP indicator"><img></div>
+                            <div class="bargeRP indicator"><img></div>
                             <div class="win indicator">
                                 <img id="tie" src="../../images/tie-icon.png" hidden>
                                 <img id="win">
@@ -169,15 +163,15 @@
                                 <div class="points">0</div>
                             </div>
                             <div class="category">
-                                <div class="label">Amp</div>
+                                <div class="label">Algae</div>
                                 <div class="points">0</div>
                             </div>
                             <div class="category">
-                                <div class="label">Speaker</div>
+                                <div class="label">Coral</div>
                                 <div class="points">0</div>
                             </div>
                             <div class="category">
-                                <div class="label">Stage</div>
+                                <div class="label">Barge</div>
                                 <div class="points">0</div>
                             </div>
                             <div class="category">
@@ -233,15 +227,15 @@
                                 <div class="points">0</div>
                             </div>
                             <div class="category">
-                                <div class="label">Amp</div>
+                                <div class="label">Algae</div>
                                 <div class="points">0</div>
                             </div>
                             <div class="category">
-                                <div class="label">Speaker</div>
+                                <div class="label">Coral</div>
                                 <div class="points">0</div>
                             </div>
                             <div class="category">
-                                <div class="label">Stage</div>
+                                <div class="label">Barge</div>
                                 <div class="points">0</div>
                             </div>
                             <div class="category">
@@ -266,7 +260,7 @@
                         <th>Team</th>
                         <th>Ranking<br/>Score</th>
                         <th>Auto</th>
-                        <th>Stage</th>
+                        <th>Barge</th>
                         <th>Record<br />(W-L-T)</th>
                         <th>DQs</th>
                         <th>Played</th>

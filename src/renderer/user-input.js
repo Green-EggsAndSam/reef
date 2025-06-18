@@ -26,55 +26,85 @@ ipc.on(CtrlMsg.LEAVE, (_, data) => {
     else Competition.match.blue.setLeaves(data.count);
 });
 
-ipc.on(CtrlMsg.AMP, (_, data) => {
+ipc.on(CtrlMsg.CORALL1, (_, data) => {
     let alliance = data.red ? Competition.match.red : Competition.match.blue;
     if (data.type == "auto") {
-        if (data.undo) alliance.removeAutoAmpNote();
-        else alliance.addAutoAmpNote();
+        if (data.undo) alliance.removeAutoCoralL1();
+        else alliance.addAutoCoralL1();
+    } else if (data.type == "tele") {
+        if (data.undo) alliance.removeTeleopCoralL1();
+        else alliance.addTeleopCoralL1();
     } else if (data.type == "context") {
-        if (data.undo) alliance.removeAmpNote();
-        else alliance.addAmpNote();
+        if (data.undo) alliance.removeCoralL1();
+        else alliance.addCoralL1();
     }
 });
-ipc.on(CtrlMsg.SPEAKER, (_, data) => {
+ipc.on(CtrlMsg.CORALL2, (_, data) => {
     let alliance = data.red ? Competition.match.red : Competition.match.blue;
     if (data.type == "auto") {
-        if (data.undo) alliance.removeAutoSpeakerNote();
-        else alliance.addAutoSpeakerNote();
-    } else if (data.type == "unamped") {
-        if (data.undo) alliance.removeTeleopSpeakerNote();
-        else alliance.addTeleopSpeakerNote();
-    } else if (data.type == "amped") {
-        if (data.undo) alliance.removeAmpedSpeakerNote();
-        else alliance.addAmpedSpeakerNote();
+        if (data.undo) alliance.removeAutoCoralL2();
+        else alliance.addAutoCoralL2();
+    } else if (data.type == "tele") {
+        if (data.undo) alliance.removeTeleopCoralL2();
+        else alliance.addTeleopCoralL2();
     } else if (data.type == "context") {
-        if (data.undo) alliance.removeSpeakerNote();
-        else alliance.addSpeakerNote();
+        if (data.undo) alliance.removeCoralL2();
+        else alliance.addCoralL2();
+    }
+});
+ipc.on(CtrlMsg.CORALL3, (_, data) => {
+    let alliance = data.red ? Competition.match.red : Competition.match.blue;
+    if (data.type == "auto") {
+        if (data.undo) alliance.removeAutoCoralL3();
+        else alliance.addAutoCoralL3();
+    } else if (data.type == "tele") {
+        if (data.undo) alliance.removeTeleopCoralL3();
+        else alliance.addTeleopCoralL3();
+    } else if (data.type == "context") {
+        if (data.undo) alliance.removeCoralL3();
+        else alliance.addCoralL3();
+    }
+});
+ipc.on(CtrlMsg.CORALL4, (_, data) => {
+    let alliance = data.red ? Competition.match.red : Competition.match.blue;
+    if (data.type == "auto") {
+        if (data.undo) alliance.removeAutoCoralL4();
+        else alliance.addAutoCoralL4();
+    } else if (data.type == "tele") {
+        if (data.undo) alliance.removeTeleopCoralL4();
+        else alliance.addTeleopCoralL4();
+    } else if (data.type == "context") {
+        if (data.undo) alliance.removeCoralL4();
+        else alliance.addCoralL4();
     }
 });
 
-ipc.on(CtrlMsg.AMPLIFY, (_, data) => {
-    if (data.red) Competition.match.red.startAmplification();
-    else Competition.match.blue.startAmplification();
+ipc.on(CtrlMsg.PROCESSOR, (_, data) => {
+    let alliance = data.red ? Competition.match.red : Competition.match.blue;
+     if (data.undo) alliance.removeProcessor();
+        else alliance.addProcessor();
 });
+ipc.on(CtrlMsg.NET, (_, data) => {
+    let alliance = data.red ? Competition.match.red : Competition.match.blue;
+    if (data.undo) alliance.removeNet();
+    else alliance.addNet();
+});
+ipc.on(CtrlMsg.ABYSS, (_, data) => {
+    let alliance = data.red ? Competition.match.red : Competition.match.blue;
+    if (data.undo) alliance.removeAbyss();
+    else alliance.addAbyss();
+});
+
 ipc.on(CtrlMsg.COOP, (_, data) => {
     let alliance = data.red ? Competition.match.red : Competition.match.blue;
     if (data.force) alliance.setCoopertitionForce(!data.undo);
     else alliance.setCoopertition();
 });
 
-const stageMap = { 0: 0, 1: Match.PointValues.PARK, 2: Match.PointValues.ONSTAGE };
-ipc.on(CtrlMsg.STAGE, (_, data) => {
-    if (data.red) Competition.match.red.setStage(data.position, stageMap[data.level]);
-    else Competition.match.blue.setStage(data.position, stageMap[data.level]);
-});
-ipc.on(CtrlMsg.TRAP, (_, data) => {
-    if (data.red) Competition.match.red.setTrapNote(data.position, !data.undo);
-    else Competition.match.blue.setTrapNote(data.position, !data.undo);
-});
-ipc.on(CtrlMsg.HARMONY, (_, data) => {
-    if (data.red) Competition.match.red.setHarmony(data.count);
-    else Competition.match.blue.setHarmony(data.count);
+const bargeMap = { 0: 0, 1: Match.PointValues.PARK, 2: Match.PointValues.DEEP };
+ipc.on(CtrlMsg.BARGE, (_, data) => {
+    if (data.red) Competition.match.red.setBarge(data.position, bargeMap[data.level]);
+    else Competition.match.blue.setBarge(data.position, BargeMap[data.level]);
 });
 
 ipc.on(CtrlMsg.FOUL, (_, data) => {
@@ -109,24 +139,30 @@ export function sendMatchData() {
             number: alliance.number,
             fouls: alliance.fouls,
             techFouls: alliance.techFouls,
-            autoAmp: alliance.autoAmpNotes,
-            autoSpeaker: alliance.autoSpeakerNotes,
-            teleopAmp: alliance.ampNotes,
-            unampedSpeaker: alliance.speakerNotes,
-            ampedSpeaker: alliance.ampedSpeakerNotes,
-            melody: alliance.melody,
-            ensemble: alliance.ensemble,
+            autoCoralL1: alliance.autoCoralL1,
+            autoCoralL2: alliance.autoCoralL2,
+            autoCoralL3: alliance.autoCoralL3,
+            autoCoralL4: alliance.autoCoralL4,
+            coralL1: alliance.coralL1,
+            coralL2: alliance.coralL2,
+            coralL3: alliance.coralL3,
+            coralL4: alliance.coralL4,
+            processor: alliance.processor,
+            net: alliance.net,
+            abyss: alliance.abyss,
+            barge: alliance.barge,
+
+            coralRP: alliance.coralRP,
+            autoRP: alliance.autoRP,
+            bargeRP: alliance.bargeRP,
 
             matchPoints: alliance.matchPoints,
             leaves: alliance.leaves,
-            notes: alliance.notes,
-            melodyThreshold: alliance.melodyThreshold,
-            ampCharge: alliance.ampCharge,
-            ampDurationRemaining: alliance.ampDurationRemaining,
+            algae: alliance.algae,
+            coralRPThreshold: alliance.coralRPThreshold,
+            filledCoralLevels: alliance.filledCoralLevels,
             coopertition: alliance.coopertition,
-            stage: alliance.stage,
-            trapNotes: alliance.trapNotes,
-            harmony: alliance.harmony,
+            barge: alliance.barge,
             color: alliance.color
         }
     });

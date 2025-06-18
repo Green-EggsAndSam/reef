@@ -54,8 +54,8 @@ $("#phase button#ready-for-match").on("click", () => {
 $("#phase button#start-match").on("click", () => {
     phase = Phase.IN_MATCH;
     ipc.send(CtrlMsg.START_MATCH);
-    $(".leave button, .stage button, .harmony button").removeClass("selected");
-    $(".leave button.none, .stage button.none, .harmony button.none").addClass("selected");
+    $(".leave button, .barge button").removeClass("selected");
+    $(".leave button.none, .barge button.none").addClass("selected");
 });
 
 // Match
@@ -79,22 +79,16 @@ $("#match button#next-match").on("click", () => ipc.send(CtrlMsg.NEXT_MATCH));
 $("#match button#previous-match").on("click", () => ipc.send(CtrlMsg.PREVIOUS_MATCH));
 
 // Points
-$(".leave button, .stage button, .harmony button").on("click", e => {
+$(".leave button, .barge button").on("click", e => {
     $(e.target).addClass("selected");
     $(e.target).siblings().removeClass("selected");
     let red = $(e.target).hasClass("red");
     if ($(e.target).parent().hasClass("leave")) { 
         ipc.send(CtrlMsg.LEAVE, { red: red, count: $(e.target).attr("value") });
-    } else if ($(e.target).parent().hasClass("harmony")) { 
-        ipc.send(CtrlMsg.HARMONY, { red: red, count: $(e.target).attr("value") });
-    } else if ($(e.target).parent().hasClass("trap")) { 
+    } else if ($(e.target).parent().hasClass("barge")) {
         let posMap = { "left": 0, "mid": 1, "right": 2 };
         let pos = posMap[Object.keys(posMap).find(pos => $(e.target).hasClass(pos))];
-        ipc.send(CtrlMsg.TRAP, { red: red, position: pos, undo: $(e.target).attr("value") == 0 });
-    } else if ($(e.target).parent().hasClass("stage")) {
-        let posMap = { "left": 0, "mid": 1, "right": 2 };
-        let pos = posMap[Object.keys(posMap).find(pos => $(e.target).hasClass(pos))];
-        let lvlMap = { "none": 0, "park": 1, "onstage": 2 };
+        let lvlMap = { "none": 0, "park": 1, "deep": 2 };
         let lvl = lvlMap[Object.keys(lvlMap).find(lvl => $(e.target).hasClass(lvl))];
         ipc.send(CtrlMsg.STAGE, { red: red, position: pos, level: lvl });
     }});
@@ -119,37 +113,53 @@ $(document).on("keyup", e => { if (e.code in mods) mods[e.code] = false; });
 // TODO: Using control instead of shift because of weird shift keyup behavior, see https://stackoverflow.com/questions/62683548/why-does-shiftleft-not-trigger-a-keyup-event-while-shiftright-is-held-and-vi
 const keyMap = {
     // Red
-    "KeyS": ["speaker", "red", "context", "ControlLeft"],
-    "KeyX": ["amp",     "red", "context", "ControlLeft"],
-    "KeyF": ["amplify", "red"],
     "KeyG": ["coop",    "red", false, "ControlLeft"],
+    "KeyF": ["coop",    "red", true,      "ControlLeft"],
 
-    "Digit1": ["amp",     "red", "auto",    "ControlLeft"],
-    "Digit2": ["speaker", "red", "auto",    "ControlLeft"],
-    "Digit3": ["speaker", "red", "unamped", "ControlLeft"],
-    "Digit4": ["speaker", "red", "amped",   "ControlLeft"],
-    "Digit5": ["coop",    "red", true,      "ControlLeft"],
+    "KeyQ":      ["coralL1", "red", "context", "ControlLeft"],
+    "KeyW":      ["coralL2", "red", "context", "ControlLeft"],
+    "KeyE":      ["coralL3", "red", "context", "ControlLeft"],
+    "KeyR":      ["coralL4", "red", "context", "ControlLeft"],
+
+    "Digit1": ["coralL1", "red", "auto", "ControlLeft"],
+    "Digit2": ["coralL2", "red", "auto", "ControlLeft"],
+    "Digit3": ["coralL3", "red", "auto", "ControlLeft"],
+    "Digit4": ["coralL4", "red", "auto", "ControlLeft"],
+
+    "KeyZ":      ["processor", "red", "context", "ControlLeft"],
+    "KeyX":      ["net",       "red", "context", "ControlLeft"],
+    "KeyC":      ["abyss",     "red", "context", "ControlLeft"],
 
     // Blue
-    "KeyJ":      ["speaker", "blue", "context", "ControlRight"],
-    "KeyM":      ["amp",     "blue", "context", "ControlRight"],
-    "KeyL":      ["amplify", "blue"],
-    "Semicolon": ["coop",    "blue", false,     "ControlRight"],
+    "KeyJ": ["coop",    "red", false, "ControlLeft"],
+    "KeyK": ["coop",    "red", true,      "ControlLeft"],
 
-    "Digit6": ["amp",     "blue", "auto",    "ControlRight"],
-    "Digit7": ["speaker", "blue", "auto",    "ControlRight"],
-    "Digit8": ["speaker", "blue", "unamped", "ControlRight"],
-    "Digit9": ["speaker", "blue", "amped",   "ControlRight"],
-    "Digit0": ["coop",    "blue", true,      "ControlRight"],
+    "KeyU":      ["coralL1", "red", "context", "ControlLeft"],
+    "KeyI":      ["coralL2", "red", "context", "ControlLeft"],
+    "KeyO":      ["coralL3", "red", "context", "ControlLeft"],
+    "KeyP":      ["coralL4", "red", "context", "ControlLeft"],
+
+    "Digit7": ["coralL1", "red", "auto", "ControlLeft"],
+    "Digit8": ["coralL2", "red", "auto", "ControlLeft"],
+    "Digit9": ["coralL3", "red", "auto", "ControlLeft"],
+    "Digit0": ["coralL4", "red", "auto", "ControlLeft"],
+
+    "KeyB":      ["processor", "red", "context", "ControlLeft"],
+    "KeyN":      ["net",       "red", "context", "ControlLeft"],
+    "KeyM":      ["abyss",     "red", "context", "ControlLeft"],
 };
 
 $(document).on("keydown", e => {
     if (e.ctrlKey && e.code === "KeyA") e.preventDefault(); // Eat Ctrl+A select all shortcut
     let args = keyMap[e.code];
     if (!args) return;
-    if (args[0] == "speaker") ipc.send(CtrlMsg.SPEAKER, { red: args[1] == "red", type: args[2], undo: mods[args[3]] });
-    else if (args[0] == "amp") ipc.send(CtrlMsg.AMP, { red: args[1] == "red", type: args[2], undo: mods[args[3]] });
-    else if (args[0] == "amplify") ipc.send(CtrlMsg.AMPLIFY, { red: args[1] == "red", undo: mods[args[2]] });
+    if (args[0] == "coralL1") ipc.send(CtrlMsg.CORALL1, { red: args[1] == "red", type: args[2], undo: mods[args[3]] });
+    else if (args[0] == "coralL2") ipc.send(CtrlMsg.CORALL2, { red: args[1] == "red", type: args[2], undo: mods[args[3]] });
+    else if (args[0] == "coralL3") ipc.send(CtrlMsg.CORALL3, { red: args[1] == "red", type: args[2], undo: mods[args[3]] });
+    else if (args[0] == "coralL4") ipc.send(CtrlMsg.CORALL4, { red: args[1] == "red", type: args[2], undo: mods[args[3]] });
+    else if (args[0] == "processor") ipc.send(CtrlMsg.PROCESSOR, { red: args[1] == "red", type: args[2], undo: mods[args[3]] });
+    else if (args[0] == "net") ipc.send(CtrlMsg.NET, { red: args[1] == "red", type: args[2], undo: mods[args[3]] });
+    else if (args[0] == "abyss") ipc.send(CtrlMsg.ABYSS, { red: args[1] == "red", type: args[2], undo: mods[args[3]] });
     else if (args[0] == "coop") ipc.send(CtrlMsg.COOP, { red: args[1] == "red", force: args[2], undo: mods[args[3]] });
 });
 
@@ -167,28 +177,40 @@ ipc.on(RenderMsg.MATCH_DATA, (event, data) => {
     $("#data .blue .fouls span").text(data.red.fouls);
     $("#data .blue .tech-fouls span").text(data.red.techFouls);
 
-    $("#data .red .auto-amp span").text(data.red.autoAmp);
-    $("#data .red .auto-speaker span").text(data.red.autoSpeaker);
-    $("#data .red .teleop-amp span").text(data.red.teleopAmp);
-    $("#data .red .unamped-speaker span").text(data.red.unampedSpeaker);
-    $("#data .red .amped-speaker span").text(data.red.ampedSpeaker);
-    $("#data .red .melody span").text(data.red.melody);
-    $("#data .red .ensemble span").text(data.red.ensemble);
+    $("#data .red .auto-coralL1 span").text(data.red.autoCoralL1);
+    $("#data .red .auto-coralL2 span").text(data.red.autoCoralL2);
+    $("#data .red .auto-coralL3 span").text(data.red.autoCoralL3);
+    $("#data .red .auto-coralL4 span").text(data.red.autoCoralL4);
+    $("#data .red .coralL1 span").text(data.red.coralL1);
+    $("#data .red .coralL2 span").text(data.red.coralL2);
+    $("#data .red .coralL3 span").text(data.red.coralL3);
+    $("#data .red .coralL4 span").text(data.red.coralL4);
+    $("#data .red .processor span").text(data.red.processor);
+    $("#data .red .net span").text(data.red.net);
+    $("#data .red .abyss span").text(data.red.abyss);
+    $("#data .red .coralRP span").text(data.red.coralRP);
+    $("#data .red .autoRP span").text(data.red.autoRP);
+    $("#data .red .bargeRP span").text(data.red.bargeRP);
 
-    $("#data .blue .auto-amp span").text(data.blue.autoAmp);
-    $("#data .blue .auto-speaker span").text(data.blue.autoSpeaker);
-    $("#data .blue .teleop-amp span").text(data.blue.teleopAmp);
-    $("#data .blue .unamped-speaker span").text(data.blue.unampedSpeaker);
-    $("#data .blue .amped-speaker span").text(data.blue.ampedSpeaker);
-    $("#data .blue .melody span").text(data.blue.melody);
-    $("#data .blue .ensemble span").text(data.blue.ensemble);
+   $("#data .blue .auto-coralL1 span").text(data.blue.autoCoralL1);
+    $("#data .blue .auto-coralL2 span").text(data.blue.autoCoralL2);
+    $("#data .blue .auto-coralL3 span").text(data.blue.autoCoralL3);
+    $("#data .blue .auto-coralL4 span").text(data.blue.autoCoralL4);
+    $("#data .blue .coralL1 span").text(data.blue.coralL1);
+    $("#data .blue .coralL2 span").text(data.blue.coralL2);
+    $("#data .blue .coralL3 span").text(data.blue.coralL3);
+    $("#data .blue .coralL4 span").text(data.blue.coralL4);
+    $("#data .blue .processor span").text(data.blue.processor);
+    $("#data .blue .net span").text(data.blue.net);
+    $("#data .blue .abyss span").text(data.blue.abyss);
+    $("#data .blue .coralRP span").text(data.blue.coralRP);
+    $("#data .blue .autoRP span").text(data.blue.autoRP);
+    $("#data .blue .bargeRP span").text(data.blue.bargeRP);
 
     [data.red, data.blue].forEach(alliance => updateMatchPanel
         (
             data.matchName, alliance.teams, alliance.number, data.isPlayoff,
-            alliance.matchPoints, alliance.leaves,
-            alliance.notes, alliance.melodyThreshold, alliance.ampCharge, alliance.ampDurationRemaining, alliance.coopertition,
-            alliance.stage, alliance.trapNotes, alliance.harmony, alliance.color
+            alliance.matchPoints, alliance.filledCoralLevels, alliance.algae, alliance.coralRPThreshold, alliance.color
         )
     );
 });

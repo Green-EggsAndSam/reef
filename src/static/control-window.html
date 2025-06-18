@@ -61,36 +61,27 @@
 
             <div style="padding: 0 10px"></div>
             <div class="column">
-                <span>Red Stage</span>
+                <span>Red Barge</span>
                 <div class="row">
-                    <div class="stage small column">
-                        <button class="red left onstage" value="2">Onstage</button>
+                    <div class="barge small column">
+                        <button class="red left deep" value="2">Deep</button>
                         <button class="red left park" value="1">Park</button>
                         <button class="red left none selected" value="0">None</button>
                         <div style="padding: 5px 0"></div>
-                        <div class="trap small column">
-                            <button class="red left trap" value="1">Trap</button>
-                            <button class="red left none selected" value="0">No trap</button>
                         </div>
                     </div>
-                    <div class="stage small column">
-                        <button class="red mid onstage" value="2">Onstage</button>
+                    <div class="barge small column">
+                        <button class="red mid deep" value="2">Deep</button>
                         <button class="red mid park" value="1">Park</button>
                         <button class="red mid none selected" value="0">None</button>
                         <div style="padding: 5px 0"></div>
-                        <div class="trap small column">
-                            <button class="red mid trap" value="1">Trap</button>
-                            <button class="red mid none selected" value="0">No trap</button>
                         </div>
                     </div>
-                    <div class="stage small column">
-                        <button class="red right onstage" value="2">Onstage</button>
+                    <div class="barge small column">
+                        <button class="red right deep" value="2">Deep</button>
                         <button class="red right park" value="1">Park</button>
                         <button class="red right none selected" value="0">None</button>
                         <div style="padding: 5px 0"></div>
-                        <div class="trap small column">
-                            <button class="red right trap" value="1">Trap</button>
-                            <button class="red right none selected" value="0">No trap</button>
                         </div>
                     </div>
                 </div>
@@ -98,58 +89,31 @@
 
             <div style="padding: 0 10px"></div>
             <div class="column">
-                <span>Blue Stage</span>
+                <span>Blue Barge</span>
                 <div class="row">
-                    <div class="stage small column">
-                        <button class="blue left onstage" value="2">Onstage</button>
+                    <div class="barge small column">
+                        <button class="blue left deep" value="2">Deep</button>
                         <button class="blue left park" value="1">Park</button>
                         <button class="blue left none selected" value="0">None</button>
                         <div style="padding: 5px 0"></div>
-                        <div class="trap small column">
-                            <button class="blue left trap" value="1">Trap</button>
-                            <button class="blue left none selected" value="0">No trap</button>
                         </div>
                     </div>
-                    <div class="stage small column">
-                        <button class="blue mid onstage" value="2">Onstage</button>
+                    <div class="barge small column">
+                        <button class="blue mid deep" value="2">Deep</button>
                         <button class="blue mid park" value="1">Park</button>
                         <button class="blue mid none selected" value="0">None</button>
                         <div style="padding: 5px 0"></div>
-                        <div class="trap small column">
-                            <button class="blue mid trap" value="1">Trap</button>
-                            <button class="blue mid none selected" value="0">No trap</button>
                         </div>
                     </div>
-                    <div class="stage small column">
-                        <button class="blue right onstage" value="2">Onstage</button>
+                    <div class="barge small column">
+                        <button class="blue right deep" value="2">Deep</button>
                         <button class="blue right park" value="1">Park</button>
                         <button class="blue right none selected" value="0">None</button>
                         <div style="padding: 5px 0"></div>
-                        <div class="trap small column">
-                            <button class="blue right trap" value="1">Trap</button>
-                            <button class="blue right none selected" value="0">No trap</button>
                         </div>
                     </div>
                 </div>
             </div>
-            
-            <div style="padding: 0 10px"></div>
-            <div class="column">
-                <span>Harmony</span>
-                <div class="row">
-                    <div class="harmony small column" style="width: 40px">
-                        <button class="red" value="2">2</button>
-                        <button class="red" value="1">1</button>
-                        <button class="red none selected" value="0">0</button>
-                    </div>
-                    <div class="harmony small column" style="width: 40px">
-                        <button class="blue" value="2">2</button>
-                        <button class="blue" value="1">1</button>
-                        <button class="blue none selected" value="0">0</button>
-                    </div>
-                </div>
-            </div>
-        </div>
         
         <div class="label">Fouls</div>
         <div id="fouls" class="row">
@@ -178,24 +142,38 @@
             <div class="red info-column">
                 <div class="fouls">Red fouls: <span></span></div>
                 <div class="tech-fouls">Red tech fouls: <span></span></div>
-                <div class="auto-amp">Red auto amp: <span></span></div>
-                <div class="auto-speaker">Red auto speaker: <span></span></div>
-                <div class="teleop-amp">Red teleop amp: <span></span></div>
-                <div class="unamped-speaker">Red unamped speaker: <span></span></div>
-                <div class="amped-speaker">Red amped speaker: <span></span></div>
-                <div class="melody">Red melody RP: <span></span></div>
-                <div class="ensemble">Red ensemble RP: <span></span></div>
+                <div class="auto-coralL1">Red auto coralL1: <span></span></div>
+                <div class="auto-coralL2">Red auto coralL2: <span></span></div>
+                <div class="auto-coralL3">Red auto coralL3: <span></span></div>
+                <div class="auto-coralL4">Red auto coralL4: <span></span></div>
+                <div class="coralL1">Red coralL1: <span></span></div>
+                <div class="coralL2">Red coralL2: <span></span></div>
+                <div class="coralL3">Red coralL3: <span></span></div>
+                <div class="coralL4">Red coralL4: <span></span></div>
+                <div class="processor">Red processor: <span></span></div>
+                <div class="net">Red net: <span></span></div>
+                <div class="abyss">Red abyss: <span></span></div>
+                <div class="coralRP">Red coralRP RP: <span></span></div>
+                <div class="autoRP">Red aurpRP RP: <span></span></div>
+                <div class="bargeRP">Red bargeRP RP: <span></span></div>
             </div>
             <div class="blue info-column">
                 <div class="fouls">Blue fouls: <span></span></div>
                 <div class="tech-fouls">Blue tech fouls: <span></span></div>
-                <div class="auto-amp">Blue auto amp: <span></span></div>
-                <div class="auto-speaker">Blue auto speaker: <span></span></div>
-                <div class="teleop-amp">Blue teleop amp: <span></span></div>
-                <div class="unamped-speaker">Blue unamped speaker: <span></span></div>
-                <div class="amped-speaker">Blue amped speaker: <span></span></div>
-                <div class="melody">Blue melody RP: <span></span></div>
-                <div class="ensemble">Blue ensemble RP: <span></span></div>
+               <div class="auto-coralL1">Blue auto coralL1: <span></span></div>
+                <div class="auto-coralL2">Blue auto coralL2: <span></span></div>
+                <div class="auto-coralL3">Blue auto coralL3: <span></span></div>
+                <div class="auto-coralL4">Blue auto coralL4: <span></span></div>
+                <div class="coralL1">Blue coralL1: <span></span></div>
+                <div class="coralL2">Blue coralL2: <span></span></div>
+                <div class="coralL3">Blue coralL3: <span></span></div>
+                <div class="coralL4">Blue coralL4: <span></span></div>
+                <div class="processor">Blue processor: <span></span></div>
+                <div class="net">Blue net: <span></span></div>
+                <div class="abyss">Blue abyss: <span></span></div>
+                <div class="coralRP">Blue coralRP RP: <span></span></div>
+                <div class="autoRP">Blue aurpRP RP: <span></span></div>
+                <div class="bargeRP">Blue bargeRP RP: <span></span></div>
             </div>
         </div>
     </div>
@@ -207,15 +185,12 @@
     <div id="scoring-panel">
 
     <div class="column">
-        <div class="blue note-panel row">
+        <div class="blue coral-panel row">
             <div class="note-border">
-                <div class="note-icon"></div>
-                <div class="note-count">4/4</div>
+                <div class="coral-icon"></div>
+                <div class="coral-count">4/4</div>
             </div>
             <div class="coop-indicator"></div>
-            <div class="amp-charge"></div>
-            <div class="amp-charge"></div>
-            <div class="amp-timer"><div class="bar"></div></div>
         </div>
 
         <div class="row">
@@ -227,12 +202,10 @@
                 </div>
             </div>
             <div style="width: 40px"></div>
-            <div class="blue row stage-panel">
-                <div class="stage left"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot left" src="../../images/endgame-blue-1.png"/></div>
-                <div class="stage mid"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot mid" src="../../images/endgame-blue-2.png"/></div>
-                <div class="stage right"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot right" src="../../images/endgame-blue-3.png"/></div>
-                <div hidden class="harmony left"></div>
-                <div hidden class="harmony right"></div>
+            <div class="blue row barge-panel">
+                <div class="barge left"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot left" src="../../images/endgame-blue-1.png"/></div>
+                <div class="barge mid"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot mid" src="../../images/endgame-blue-2.png"/></div>
+                <div class="barge right"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot right" src="../../images/endgame-blue-3.png"/></div>
             </div>
         </div>
     </div>
@@ -264,15 +237,12 @@
     </div>
 
     <div class="column">
-        <div class="red note-panel">
-            <div class="note-border">
-                <div class="note-icon"></div>
-                <div class="note-count">11/15</div>
+        <div class="red coral-panel">
+            <div class="coral-border">
+                <div class="coral-icon"></div>
+                <div class="coral-count">11/15</div>
             </div>
             <div class="coop-indicator"></div>
-            <div class="amp-charge"></div>
-            <div class="amp-charge"></div>
-            <div class="amp-timer"><div class="bar"></div></div>
         </div>
 
         <div class="red row">
@@ -284,12 +254,10 @@
                 </div>
             </div>
             <div style="width: 30px"></div>
-            <div class="red row stage-panel">
-                <div class="stage left"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot left" src="../../images/endgame-red-1.png"/></div>
-                <div class="stage mid"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot mid" src="../../images/endgame-red-2.png"/></div>
-                <div class="stage right"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot right" src="../../images/endgame-red-3.png"/></div>
-                <div hidden class="harmony left"></div>
-                <div hidden class="harmony right"></div>
+            <div class="red row barge-panel">
+                <div class="barge left"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot left" src="../../images/endgame-red-1.png"/></div>
+                <div class="barge mid"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot mid" src="../../images/endgame-red-2.png"/></div>
+                <div class="barge right"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot right" src="../../images/endgame-red-3.png"/></div>
             </div>
         </div>
     </div>

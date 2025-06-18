@@ -102,7 +102,7 @@ function updateRpPanel(alliance) {
     else bargeRP.removeClass("lit");
     if ((alliance.color == Match.AllianceColor.RED && Competition.results.result == Match.Result.RED_WIN)
             || (alliance.color == Match.AllianceColor.BLUE && Competition.results.result == Match.Result.BLUE_WIN)) {
-        rp += 2;
+        rp += 3;
         win.addClass("lit");
     } else if (Competition.results.result == Match.Result.TIE) {
         rp += 1;
