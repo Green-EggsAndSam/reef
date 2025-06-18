@@ -59,7 +59,7 @@ export function generateMatch(number, set, type, redTeams, blueTeams, redAllianc
             redAlgaeProcessor: 0,
             redAlgaeAbyss: 0,
             redCoopertition: false,
-            redBarge: [0,0],
+            redBarge: [0,0,0],
             redFouls: 0,
             redTechFouls: 0,
             redAutoRP: false,
@@ -82,7 +82,7 @@ export function generateMatch(number, set, type, redTeams, blueTeams, redAllianc
             blueAlgaeProcessor: 0,
             blueAlgaeAbyss: 0,
             blueCoopertition: false,
-            blueBarge: [0,0],
+            blueBarge: [0,0,0],
             blueFouls: 0,
             blueTechFouls: 0,
             blueAutoRP: false,
@@ -175,39 +175,39 @@ export function getLeaves(number, set, type, color) { return lookupByAlliance("L
 export function setLeaves(mobility, number, set, type, color) { updateByAlliance("Leaves", mobility, color, number, set, type); }
 
 export function getAutoCoralL1(number, set, type, color) { return lookupByAlliance("AutoCoralL1", color, number, set, type); }
-export function setAutoCoralL1(AutoCoralL1, number, set, type, color) { updateByAlliance("AutoCoralL1", autoCoralL1, color, number, set, type); }
+export function setAutoCoralL1(autoCoralL1, number, set, type, color) { updateByAlliance("AutoCoralL1", autoCoralL1, color, number, set, type); }
 export function getAutoCoralL2(number, set, type, color) { return lookupByAlliance("AutoCoralL2", color, number, set, type); }
-export function setAutoCoralL2(AutoCoralL2, number, set, type, color) { updateByAlliance("AutoCoralL2", autoCoralL2, color, number, set, type); }
+export function setAutoCoralL2(autoCoralL2, number, set, type, color) { updateByAlliance("AutoCoralL2", autoCoralL2, color, number, set, type); }
 export function getAutoCoralL3(number, set, type, color) { return lookupByAlliance("AutoCoralL3", color, number, set, type); }
-export function setAutoCoralL3(AutoCoralL3, number, set, type, color) { updateByAlliance("AutoCoralL3", autoCoralL3, color, number, set, type); }
+export function setAutoCoralL3(autoCoralL3, number, set, type, color) { updateByAlliance("AutoCoralL3", autoCoralL3, color, number, set, type); }
 export function getAutoCoralL4(number, set, type, color) { return lookupByAlliance("AutoCoralL4", color, number, set, type); }
-export function setAutoCoralL4(AutoCoralL4, number, set, type, color) { updateByAlliance("AutoCoralL4", autoCoralL4, color, number, set, type); }
+export function setAutoCoralL4(autoCoralL4, number, set, type, color) { updateByAlliance("AutoCoralL4", autoCoralL4, color, number, set, type); }
 export function getCoralL1(number, set, type, color) { return lookupByAlliance("CoralL1", color, number, set, type); }
-export function setCoralL1(CoralL1, number, set, type, color) { updateByAlliance("CoralL1", coralL1, color, number, set, type); }
+export function setCoralL1(coralL1, number, set, type, color) { updateByAlliance("CoralL1", coralL1, color, number, set, type); }
 export function getCoralL2(number, set, type, color) { return lookupByAlliance("CoralL2", color, number, set, type); }
-export function setCoralL2(CoralL2, number, set, type, color) { updateByAlliance("CoralL2", coralL2, color, number, set, type); }
+export function setCoralL2(coralL2, number, set, type, color) { updateByAlliance("CoralL2", coralL2, color, number, set, type); }
 export function getCoralL3(number, set, type, color) { return lookupByAlliance("CoralL3", color, number, set, type); }
-export function setCoralL3(CoralL3, number, set, type, color) { updateByAlliance("CoralL3", coralL3, color, number, set, type); }
+export function setCoralL3(coralL3, number, set, type, color) { updateByAlliance("CoralL3", coralL3, color, number, set, type); }
 export function getCoralL4(number, set, type, color) { return lookupByAlliance("CoralL4", color, number, set, type); }
-export function setCoralL4(CoralL4, number, set, type, color) { updateByAlliance("CoralL4", coralL4, color, number, set, type); }
+export function setCoralL4(coralL4, number, set, type, color) { updateByAlliance("CoralL4", coralL4, color, number, set, type); }
 export function getAlgaeNet(number, set, type, color) { return lookupByAlliance("AlgaeNet", color, number, set, type); }
-export function setAlgaeNet(AlgaeNet, number, set, type, color) { updateByAlliance("AlgaeNet", algaeNet, color, number, set, type); }
+export function setAlgaeNet(algaeNet, number, set, type, color) { updateByAlliance("AlgaeNet", algaeNet, color, number, set, type); }
 export function getAlgaeProcessor(number, set, type, color) { return lookupByAlliance("AlgaeProcessor", color, number, set, type); }
-export function setAlgaeProcessor(AlgaeProcessor, number, set, type, color) { updateByAlliance("AlgaeProcessor", algaeProcessor, color, number, set, type); }
+export function setAlgaeProcessor(algaeProcessor, number, set, type, color) { updateByAlliance("AlgaeProcessor", algaeProcessor, color, number, set, type); }
 export function getAlgaeAbyss(number, set, type, color) { return lookupByAlliance("AlgaeAbyss", color, number, set, type); }
-export function setAlgaeAbyss(AlgaeAbyss, number, set, type, color) { updateByAlliance("AlgaeAbyss", algaeAbyss, color, number, set, type); }
+export function setAlgaeAbyss(algaeAbyss, number, set, type, color) { updateByAlliance("AlgaeAbyss", algaeAbyss, color, number, set, type); }
 
 export function getCoopertition(number, set, type, color) { return lookupByAlliance("Coopertition", color, number, set, type); }
 export function setCoopertition(coopertition, number, set, type, color) { updateByAlliance("Coopertition", coopertition, color, number, set, type); }
 
 export function getBarge(number, set, type, color) { return lookupByAlliance("Barge", color, number, set, type); }
-export function setBarge(Barge, number, set, type, color) { updateByAlliance("Barge", barge, color, number, set, type); }
+export function setBarge(barge, number, set, type, color) { updateByAlliance("Barge", barge, color, number, set, type); }
 export function getBargeRP(number, set, type, color) { return lookupByAlliance("BargeRP", color, number, set, type); }
-export function setBargeRP(BargeRP, number, set, type, color) { updateByAlliance("BargeRP", bargeRP, color, number, set, type); }
+export function setBargeRP(bargeRP, number, set, type, color) { updateByAlliance("BargeRP", bargeRP, color, number, set, type); }
 export function getAutoRP(number, set, type, color) { return lookupByAlliance("AutoRP", color, number, set, type); }
-export function setAutoRP(AutoRP, number, set, type, color) { updateByAlliance("AutoRP", autoRP, color, number, set, type); }
+export function setAutoRP(autoRP, number, set, type, color) { updateByAlliance("AutoRP", autoRP, color, number, set, type); }
 export function getCoralRP(number, set, type, color) { return lookupByAlliance("CoralRP", color, number, set, type); }
-export function setCoralRP(CoralRP, number, set, type, color) { updateByAlliance("CoralRP", coralRP, color, number, set, type); }
+export function setCoralRP(coralRP, number, set, type, color) { updateByAlliance("CoralRP", coralRP, color, number, set, type); }
 
 /**
  * Gets the number of regular fouls awarded to the specified alliance as a result

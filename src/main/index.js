@@ -10,7 +10,7 @@ function createWindows() {
     const mainWindow = new BrowserWindow({
         width: 800,
         height: 600,
-        title: "MiniFRC Crescendo FMS",
+        title: "MiniFRC Reefscape FMS",
         webPreferences: {
             preload: path.join(__dirname, "preload.js")
         }

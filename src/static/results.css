@@ -215,10 +215,12 @@
 
 .alliance-panel .details .rp-panel .indicator img { height: 60px; }
 
-.rp-panel .melody.indicator img { content: url(../../images/grey-melody.png); transform: scale(0.7); }
-.rp-panel .lit.melody.indicator img { content: url(../../images/lit-melody.png); transform: scale(0.7);  }
-.rp-panel .ensemble.indicator img { content: url(../../images/grey-ensemble.png); transform: scale(0.8); }
-.rp-panel .lit.ensemble.indicator img { content: url(../../images/lit-ensemble.png); transform: scale(0.8); }
+.rp-panel .autoRP.indicator img { content: url(../../images/grey-melody.png); transform: scale(0.7); }
+.rp-panel .lit.autoRP.indicator img { content: url(../../images/lit-melody.png); transform: scale(0.7);  }
+.rp-panel .coralRP.indicator img { content: url(../../images/grey-ensemble.png); transform: scale(0.8); }
+.rp-panel .lit.coralRP.indicator img { content: url(../../images/lit-ensemble.png); transform: scale(0.8); }
+.rp-panel .bargeRP.indicator img { content: url(../../images/grey-ensemble.png); transform: scale(0.8); }
+.rp-panel .lit.bargeRP.indicator img { content: url(../../images/lit-ensemble.png); transform: scale(0.8); }
 .rp-panel .win.indicator img { content: url(../../images/win-icon-grey.png); transform: scale(0.7); }
 .rp-panel .lit.win.indicator img { content: url(../../images/win-icon.png); transform: scale(0.7); }
 

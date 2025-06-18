@@ -323,7 +323,7 @@ export class Match {
         /** @type {number} */    algaeAbyss = 0;
 
         /** @type {boolean} */   coopertition = false;
-        /** @type {number[]} */  barge = [0,0]; // Point values of completed endgame tasks
+        /** @type {number[]} */  barge = [0,0,0]; // Point values of completed endgame tasks
         /** @type {number} */    fouls = 0; // Awarded to this alliance, committed by opponent
         /** @type {number} */    techFouls = 0; // Awarded to this alliance, committed by opponent
 
@@ -509,7 +509,7 @@ export class Match {
             this.coralL3          = repository.getCoralL3(...this.#match.#id, this.color);
             this.coralL4          = repository.getCoralL4(...this.#match.#id, this.color);
             this.algaeProcessor  = repository.getAlgaeProcessor(...this.#match.#id, this.color);
-            this.barge          = repository.getbarge(...this.#match.#id, this.color);
+            this.barge          = repository.getBarge(...this.#match.#id, this.color);
             this.algaeNet         = repository.getAlgaeNet(...this.#match.#id, this.color);
             this.algaeAbyss       = repository.getAlgaeAbyss(...this.#match.#id, this.color);
             this.coopertition      = repository.getCoopertition(...this.#match.#id, this.color);

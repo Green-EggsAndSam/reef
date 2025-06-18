@@ -335,31 +335,6 @@
 }
 #overlay .lit.coop-indicator { background-color: goldenrod; }
 
-#overlay .amp-charge {
-    width: 40px; height: 40px;
-    background-color: grey;
-    box-sizing: border-box;
-    border: 5px solid black;
-    border-radius: 60px;
-}
-#overlay .red .lit.amp-charge { background-color: rgb(233, 13, 13); }
-#overlay .blue .lit.amp-charge { background-color: rgb(62, 62, 255); }
-
-#overlay .amp-timer {
-    position: absolute;
-    top: 0;
-    width: 550px; height: 30px;
-    background-color: white;
-    box-sizing: border-box;
-    border: 5px solid black;
-}
-#overlay .amp-timer .bar {
-    position: absolute;
-    width: 0; height: 100%;
-}
-#overlay .red .amp-timer .bar { background-color: rgb(233, 13, 13); right: 0; }
-#overlay .blue .amp-timer .bar { background-color: rgb(62, 62, 255); left: 0; }
-
 /* Auto */
 #overlay .auto-panel {
     margin-top: 50px;
@@ -374,19 +349,19 @@
     width: 60px;
 }
 
-/* Stage */
-#overlay .stage-panel {
+/* Barge */
+#overlay .barge-panel {
     position: relative;
     margin-top: 60px;
     height: 35px;
     width: 320px;
 }
 
-.stage-panel .stage {
+.barge-panel .barge {
     position: relative;
 }
 
-.stage-panel .stage .border {
+.barge-panel .barge .border {
     position: relative;
     width: 65px;
     inset: 0 0 auto 0;
@@ -395,7 +370,7 @@
     border-left: 20px solid transparent;
     border-right: 20px solid transparent;
 }
-.stage-panel .stage .platform {
+.barge-panel .barge .platform {
     position: absolute;
     width: 60px;
     inset: 5px 0 auto 0;
@@ -405,39 +380,20 @@
     border-right: 16px solid transparent;
 }
 
-.stage-panel .harmony {
-    position: absolute;
-    width: 50px; height: 30px;
-    left: 80px;
-    background-color: rgb(170, 170, 170);
-    border-top: 5px solid black;
-}
-.stage-panel .harmony.left { left: 80px; }
-.stage-panel .harmony.right { left: 190px; }
-
-.stage-panel .stage .trap {
-    position: absolute;
-    width: 20px; height: 20px;
-    inset: 5px 0 auto 0;
-    margin: 0 auto;
-    border: 5px solid orange;
-    border-radius: 25px;
-}
-
-.stage-panel .robot {
+.barge-panel .robot {
     display: none;
     z-index: 1;
     position: absolute;
     transform: scale(3);
     image-rendering: pixelated;
 }
-.stage-panel .robot.park {
+.barge-panel .robot.park {
     display: block;
     transform-origin: bottom left;
     bottom: -10px;
     left: -10px;
 }
-.stage-panel .robot.onstage {
+.barge-panel .robot.deep {
     display: block;
     transform-origin: bottom center;
     bottom: 35px;

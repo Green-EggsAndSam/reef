@@ -90,7 +90,7 @@ $(".leave button, .barge button").on("click", e => {
         let pos = posMap[Object.keys(posMap).find(pos => $(e.target).hasClass(pos))];
         let lvlMap = { "none": 0, "park": 1, "deep": 2 };
         let lvl = lvlMap[Object.keys(lvlMap).find(lvl => $(e.target).hasClass(lvl))];
-        ipc.send(CtrlMsg.STAGE, { red: red, position: pos, level: lvl });
+        ipc.send(CtrlMsg.BARGE, { red: red, position: pos, level: lvl });
     }});
 
 // Fouls
@@ -172,6 +172,7 @@ ipc.on(RenderMsg.MATCH_ENDED, () => {
 });
 ipc.on(RenderMsg.MATCH_DATA, (event, data) => {
     // Flip fouls to the alliance that caused them
+    console.log("Match data received:");
     $("#data .red .fouls span").text(data.blue.fouls);
     $("#data .red .tech-fouls span").text(data.blue.techFouls);
     $("#data .blue .fouls span").text(data.red.fouls);
