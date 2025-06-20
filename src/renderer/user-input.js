@@ -103,8 +103,8 @@ ipc.on(CtrlMsg.COOP, (_, data) => {
 
 const bargeMap = { 0: 0, 1: Match.PointValues.PARK, 2: Match.PointValues.DEEP };
 ipc.on(CtrlMsg.BARGE, (_, data) => {
-    if (data.red) Competition.match.red.setBarge(data.position, bargeMap[data.level]);
-    else Competition.match.blue.setBarge(data.position, BargeMap[data.level]);
+    let alliance = data.red ? Competition.match.red : Competition.match.blue;
+    alliance.setBarge(data.position, bargeMap[data.level]);
 });
 
 ipc.on(CtrlMsg.FOUL, (_, data) => {
