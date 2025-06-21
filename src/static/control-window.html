@@ -1,273 +1,260 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>FMS Control Window</title>
-    <!-- TODO: Content Security Policy -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="./control-window.css">
-    <link rel="stylesheet" type="text/css" href="./match.css">
-    <script type="text/javascript" src="../../node_modules/jquery/dist/jquery.js"></script>
+  <meta charset="UTF-8" />
+  <title>FMS Control Window</title>
+  <!-- TODO: Content Security Policy -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="./control-window.css">
+  <link rel="stylesheet" href="./match.css">
+  <script src="../../node_modules/jquery/dist/jquery.js"></script>
 </head>
 
 <body>
-    <div class="frame">
-        <div class="label">View</div>
-        <div id="view" class="row">
-            <button id="match">Match</button>
-            <button id="results">Results</button>
-            <button id="rankings">Rankings</button>
-        </div>
+  <div class="frame">
 
-        <div class="label">Phase</div>
-        <div id="phase" class="row">
-            <button id="no-entry">Do not Enter</button>
-            <button id="safe-to-enter">Safe to Enter</button>
-            <button id="ready-for-match">Ready for Match</button>
-            <button id="start-match">Start Match</button>
-        </div>
-
-        <div class="label">Match</div>
-        <div id="match" class="row">
-            <div class="column">
-                <button id="next-match">Next Match</button>
-                <button id="previous-match">Prev Match</button>
-            </div>
-            <button id="field-fault">Field Fault</button>
-            <button id="replay-match">Replay Match</button>
-            <button id="save-results">Save Results</button>
-        </div>
-
-        <div class="label">Points</div>
-        <div id="points" class="row">
-
-            <div class="column">
-                <span>Leave</span>
-                <div class="row">
-                    <div class="leave small column" style="width: 40px">
-                        <button class="red" value="3">3</button>
-                        <button class="red" value="2">2</button>
-                        <button class="red" value="1">1</button>
-                        <button class="red none selected" value="0">0</button>
-                    </div>
-                    <div class="leave small column" style="width: 40px">
-                        <button class="blue" value="3">3</button>
-                        <button class="blue" value="2">2</button>
-                        <button class="blue" value="1">1</button>
-                        <button class="blue none selected" value="0">0</button>
-                    </div>
-                </div>
-            </div>
-
-            <div style="padding: 0 10px"></div>
-            <div class="column">
-                <span>Red Barge</span>
-                <div class="row">
-                    <div class="barge small column">
-                        <button class="red left deep" value="2">Deep</button>
-                        <button class="red left park" value="1">Park</button>
-                        <button class="red left none selected" value="0">None</button>
-                        <div style="padding: 5px 0"></div>
-                        </div>
-                    </div>
-                    <div class="barge small column">
-                        <button class="red mid deep" value="2">Deep</button>
-                        <button class="red mid park" value="1">Park</button>
-                        <button class="red mid none selected" value="0">None</button>
-                        <div style="padding: 5px 0"></div>
-                        </div>
-                    </div>
-                    <div class="barge small column">
-                        <button class="red right deep" value="2">Deep</button>
-                        <button class="red right park" value="1">Park</button>
-                        <button class="red right none selected" value="0">None</button>
-                        <div style="padding: 5px 0"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div style="padding: 0 10px"></div>
-            <div class="column">
-                <span>Blue Barge</span>
-                <div class="row">
-                    <div class="barge small column">
-                        <button class="blue left deep" value="2">Deep</button>
-                        <button class="blue left park" value="1">Park</button>
-                        <button class="blue left none selected" value="0">None</button>
-                        <div style="padding: 5px 0"></div>
-                        </div>
-                    </div>
-                    <div class="barge small column">
-                        <button class="blue mid deep" value="2">Deep</button>
-                        <button class="blue mid park" value="1">Park</button>
-                        <button class="blue mid none selected" value="0">None</button>
-                        <div style="padding: 5px 0"></div>
-                        </div>
-                    </div>
-                    <div class="barge small column">
-                        <button class="blue right deep" value="2">Deep</button>
-                        <button class="blue right park" value="1">Park</button>
-                        <button class="blue right none selected" value="0">None</button>
-                        <div style="padding: 5px 0"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-        <div class="label">Fouls</div>
-        <div id="fouls" class="row">
-            <div class="foul column">
-                <button class="red add">+ Foul</button>
-                <button class="red remove"> - Foul</button>
-            </div>
-            <div class="tech-foul column">
-                <button class="red tech add">+ Tech Foul</button>
-                <button class="red tech remove">- Tech Foul</button>
-            </div>
-            <div style="padding: 0 10px"></div>
-            <div class="foul column">
-                <button class="blue add">+ Foul</button>
-                <button class="blue remove">- Foul</button>
-            </div>
-            <div class="tech-foul column">
-                <button class="blue tech add">+ Tech Foul</button>
-                <button class="blue tech remove">- Tech Foul</button>
-            </div>
-        </div>
-
-        <div class="label">Data</div>
-        <div id="data">
-            <div style="padding: 0 10px"></div>
-            <div class="red info-column">
-                <div class="fouls">Red fouls: <span></span></div>
-                <div class="tech-fouls">Red tech fouls: <span></span></div>
-                <div class="auto-coralL1">Red auto coralL1: <span></span></div>
-                <div class="auto-coralL2">Red auto coralL2: <span></span></div>
-                <div class="auto-coralL3">Red auto coralL3: <span></span></div>
-                <div class="auto-coralL4">Red auto coralL4: <span></span></div>
-                <div class="coralL1">Red coralL1: <span></span></div>
-                <div class="coralL2">Red coralL2: <span></span></div>
-                <div class="coralL3">Red coralL3: <span></span></div>
-                <div class="coralL4">Red coralL4: <span></span></div>
-                <div class="processor">Red processor: <span></span></div>
-                <div class="net">Red net: <span></span></div>
-                <div class="abyss">Red abyss: <span></span></div>
-                <div class="coralRP">Red coralRP: <span></span></div>
-                <div class="autoRP">Red autoRP: <span></span></div>
-                <div class="bargeRP">Red bargeRP: <span></span></div>
-            </div>
-            <div class="blue info-column">
-                <div class="fouls">Blue fouls: <span></span></div>
-                <div class="tech-fouls">Blue tech fouls: <span></span></div>
-               <div class="auto-coralL1">Blue auto coralL1: <span></span></div>
-                <div class="auto-coralL2">Blue auto coralL2: <span></span></div>
-                <div class="auto-coralL3">Blue auto coralL3: <span></span></div>
-                <div class="auto-coralL4">Blue auto coralL4: <span></span></div>
-                <div class="coralL1">Blue coralL1: <span></span></div>
-                <div class="coralL2">Blue coralL2: <span></span></div>
-                <div class="coralL3">Blue coralL3: <span></span></div>
-                <div class="coralL4">Blue coralL4: <span></span></div>
-                <div class="processor">Blue processor: <span></span></div>
-                <div class="net">Blue net: <span></span></div>
-                <div class="abyss">Blue abyss: <span></span></div>
-                <div class="coralRP">Blue coralRP: <span></span></div>
-                <div class="autoRP">Blue autoRP: <span></span></div>
-                <div class="bargeRP">Blue bargeRP: <span></span></div>
-            </div>
-        </div>
+    <div class="label">View</div>
+    <div id="view" class="row">
+      <button id="match">Match</button>
+      <button id="results">Results</button>
+      <button id="rankings">Rankings</button>
     </div>
-    
-    <!-- Score overlay -->
 
-    <div id="match-view" style="height: auto;">
+    <div class="label">Phase</div>
+    <div id="phase" class="row">
+      <button id="no-entry">Do not Enter</button>
+      <button id="safe-to-enter">Safe to Enter</button>
+      <button id="ready-for-match">Ready for Match</button>
+      <button id="start-match">Start Match</button>
+    </div>
+
+    <div class="label">Match</div>
+    <div id="match" class="row">
+      <div class="column">
+        <button id="next-match">Next Match</button>
+        <button id="previous-match">Prev Match</button>
+      </div>
+      <button id="field-fault">Field Fault</button>
+      <button id="replay-match">Replay Match</button>
+      <button id="save-results">Save Results</button>
+    </div>
+
+    <div class="label">Points</div>
+    <div id="points" class="row">
+
+      <div class="column">
+        <span>Leave</span>
+        <div class="row">
+          <div class="leave small column" style="width: 40px">
+            <button class="red" value="3">3</button>
+            <button class="red" value="2">2</button>
+            <button class="red" value="1">1</button>
+            <button class="red none selected" value="0">0</button>
+          </div>
+          <div class="leave small column" style="width: 40px">
+            <button class="blue" value="3">3</button>
+            <button class="blue" value="2">2</button>
+            <button class="blue" value="1">1</button>
+            <button class="blue none selected" value="0">0</button>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding: 0 10px"></div>
+
+      <div class="column">
+        <span>Red Barge</span>
+        <div class="row">
+          <div class="barge small column">
+            <button class="red left deep" value="2">Deep</button>
+            <button class="red left park" value="1">Park</button>
+            <button class="red left none selected" value="0">None</button>
+          </div>
+          <div class="barge small column">
+            <button class="red mid deep" value="2">Deep</button>
+            <button class="red mid park" value="1">Park</button>
+            <button class="red mid none selected" value="0">None</button>
+          </div>
+          <div class="barge small column">
+            <button class="red right deep" value="2">Deep</button>
+            <button class="red right park" value="1">Park</button>
+            <button class="red right none selected" value="0">None</button>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding: 0 10px"></div>
+
+      <div class="column">
+        <span>Blue Barge</span>
+        <div class="row">
+          <div class="barge small column">
+            <button class="blue left deep" value="2">Deep</button>
+            <button class="blue left park" value="1">Park</button>
+            <button class="blue left none selected" value="0">None</button>
+          </div>
+          <div class="barge small column">
+            <button class="blue mid deep" value="2">Deep</button>
+            <button class="blue mid park" value="1">Park</button>
+            <button class="blue mid none selected" value="0">None</button>
+          </div>
+          <div class="barge small column">
+            <button class="blue right deep" value="2">Deep</button>
+            <button class="blue right park" value="1">Park</button>
+            <button class="blue right none selected" value="0">None</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="label">Fouls</div>
+    <div id="fouls" class="row">
+      <div class="foul column">
+        <button class="red add">+ Foul</button>
+        <button class="red remove">- Foul</button>
+      </div>
+      <div class="tech-foul column">
+        <button class="red tech add">+ Tech Foul</button>
+        <button class="red tech remove">- Tech Foul</button>
+      </div>
+      <div style="padding: 0 10px"></div>
+      <div class="foul column">
+        <button class="blue add">+ Foul</button>
+        <button class="blue remove">- Foul</button>
+      </div>
+      <div class="tech-foul column">
+        <button class="blue tech add">+ Tech Foul</button>
+        <button class="blue tech remove">- Tech Foul</button>
+      </div>
+    </div>
+
+    <div class="label">Data</div>
+    <div id="data">
+      <div style="padding: 0 10px"></div>
+      <div class="red info-column">
+        <!-- Red data fields -->
+        <div class="fouls">Red fouls: <span></span></div>
+        <div class="tech-fouls">Red tech fouls: <span></span></div>
+        <div class="auto-coralL1">Red auto coralL1: <span></span></div>
+        <div class="auto-coralL2">Red auto coralL2: <span></span></div>
+        <div class="auto-coralL3">Red auto coralL3: <span></span></div>
+        <div class="auto-coralL4">Red auto coralL4: <span></span></div>
+        <div class="coralL1">Red coralL1: <span></span></div>
+        <div class="coralL2">Red coralL2: <span></span></div>
+        <div class="coralL3">Red coralL3: <span></span></div>
+        <div class="coralL4">Red coralL4: <span></span></div>
+        <div class="processor">Red processor: <span></span></div>
+        <div class="net">Red net: <span></span></div>
+        <div class="algaeAbyss">Red abyss: <span></span></div>
+        <div class="coralRP">Red coralRP: <span></span></div>
+        <div class="autoRP">Red autoRP: <span></span></div>
+        <div class="bargeRP">Red bargeRP: <span></span></div>
+      </div>
+
+      <div class="blue info-column">
+        <!-- Blue data fields -->
+        <div class="fouls">Blue fouls: <span></span></div>
+        <div class="tech-fouls">Blue tech fouls: <span></span></div>
+        <div class="auto-coralL1">Blue auto coralL1: <span></span></div>
+        <div class="auto-coralL2">Blue auto coralL2: <span></span></div>
+        <div class="auto-coralL3">Blue auto coralL3: <span></span></div>
+        <div class="auto-coralL4">Blue auto coralL4: <span></span></div>
+        <div class="coralL1">Blue coralL1: <span></span></div>
+        <div class="coralL2">Blue coralL2: <span></span></div>
+        <div class="coralL3">Blue coralL3: <span></span></div>
+        <div class="coralL4">Blue coralL4: <span></span></div>
+        <div class="processor">Blue processor: <span></span></div>
+        <div class="net">Blue net: <span></span></div>
+        <div class="algaeAbyss">Blue abyss: <span></span></div>
+        <div class="coralRP">Blue coralRP: <span></span></div>
+        <div class="autoRP">Blue autoRP: <span></span></div>
+        <div class="bargeRP">Blue bargeRP: <span></span></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Score overlay -->
+  <div id="match-view" style="height: auto;">
     <div id="overlay">
-    <div id="scoring-panel">
+      <div id="scoring-panel" class="row">
 
-    <div class="column">
-        <div class="blue note-panel row">
+        <div class="column">
+          <div class="blue note-panel row">
             <div class="note-border">
-                <div class="note-icon"></div>
-                <div class="note-count">4/4</div>
+              <div class="note-icon"></div>
+              <div class="note-count">4/4</div>
             </div>
             <div class="coop-indicator"></div>
-        </div>
+          </div>
 
-        <div class="row">
-            <div class="blue auto-panel">
-                <div class="row">
-                    <div class="leave indicator"></div>
-                    <div class="leave indicator"></div>
-                    <div class="leave indicator"></div>
-                </div>
+          <div class="row">
+            <div class="blue auto-panel row">
+              <div class="leave indicator"></div>
+              <div class="leave indicator"></div>
+              <div class="leave indicator"></div>
             </div>
-            <div style="width: 40px"></div>
+            <div style="width: 40px;"></div>
             <div class="blue row barge-panel">
-                <div class="barge left"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot left" src="../../images/endgame-blue-1.png"/></div>
-                <div class="barge mid"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot mid" src="../../images/endgame-blue-2.png"/></div>
-                <div class="barge right"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot right" src="../../images/endgame-blue-3.png"/></div>
+              <div class="barge left"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot left" src="../../images/endgame-blue-1.png"></div>
+              <div class="barge mid"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot mid" src="../../images/endgame-blue-2.png"></div>
+              <div class="barge right"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot right" src="../../images/endgame-blue-3.png"></div>
             </div>
+          </div>
         </div>
-    </div>
 
-    <div id="match-panel">
-        <div id="match-name"></div>
-        <div id="score-box">
-            <div class="blue">
-                0
-            </div>
-            <div class="red">
-                0
-            </div>
-        </div>
-        <div id="teams">
+        <div id="match-panel">
+          <div id="match-name"></div>
+          <div id="score-box">
+            <div class="blue">0</div>
+            <div class="red">0</div>
+          </div>
+          <div id="teams">
             <div hidden class="blue alliance-number"></div>
             <div class="blue team-column">
-                <div class="number"></div>
-                <div class="number"></div>
-                <div class="number"></div>
+              <div class="number"></div>
+              <div class="number"></div>
+              <div class="number"></div>
             </div>
             <div hidden class="red alliance-number"></div>
             <div class="red team-column">
-                <div class="number"></div>
-                <div class="number"></div>
-                <div class="number"></div>
+              <div class="number"></div>
+              <div class="number"></div>
+              <div class="number"></div>
             </div>
+          </div>
         </div>
-    </div>
 
-    <div class="column">
-        <div class="red note-panel">
+        <div class="column">
+          <div class="red note-panel">
             <div class="note-border">
-                <div class="note-icon"></div>
-                <div class="note-count">11/15</div>
+              <div class="note-icon"></div>
+              <div class="note-count">11/15</div>
             </div>
             <div class="coop-indicator"></div>
-        </div>
+          </div>
 
-        <div class="red row">
-            <div class="red auto-panel">
-                <div class="red row">
-                    <div class="leave indicator"></div>
-                    <div class="leave indicator"></div>
-                    <div class="leave indicator"></div>
-                </div>
+          <div class="red row">
+            <div class="red auto-panel row">
+              <div class="leave indicator"></div>
+              <div class="leave indicator"></div>
+              <div class="leave indicator"></div>
             </div>
-            <div style="width: 30px"></div>
+            <div style="width: 30px;"></div>
             <div class="red row barge-panel">
-                <div class="barge left"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot left" src="../../images/endgame-red-1.png"/></div>
-                <div class="barge mid"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot mid" src="../../images/endgame-red-2.png"/></div>
-                <div class="barge right"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot right" src="../../images/endgame-red-3.png"/></div>
+              <div class="barge left"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot left" src="../../images/endgame-red-1.png"></div>
+              <div class="barge mid"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot mid" src="../../images/endgame-red-2.png"></div>
+              <div class="barge right"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot right" src="../../images/endgame-red-3.png"></div>
             </div>
+          </div>
         </div>
-    </div>
 
+      </div>
     </div>
-    </div>
-    </div>
+  </div>
 
-
-
-    <script src="../renderer/control-window-renderer.js" type="module"></script>
+  <script src="../renderer/control-window-renderer.js" type="module"></script>
 </body>
+
 </html>

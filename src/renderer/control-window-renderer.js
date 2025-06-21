@@ -131,22 +131,22 @@ const keyMap = {
     "KeyC":      ["abyss",     "red", "context", "ControlLeft"],
 
     // Blue
-    "KeyJ": ["coop",    "red", false, "ControlLeft"],
-    "KeyK": ["coop",    "red", true,      "ControlLeft"],
+    "KeyJ": ["coop",    "blue", false, "ControlLeft"],
+    "KeyK": ["coop",    "blue", true,      "ControlLeft"],
 
-    "KeyU":      ["coralL1", "red", "context", "ControlLeft"],
-    "KeyI":      ["coralL2", "red", "context", "ControlLeft"],
-    "KeyO":      ["coralL3", "red", "context", "ControlLeft"],
-    "KeyP":      ["coralL4", "red", "context", "ControlLeft"],
+    "KeyU":      ["coralL1", "blue", "context", "ControlLeft"],
+    "KeyI":      ["coralL2", "blue", "context", "ControlLeft"],
+    "KeyO":      ["coralL3", "blue", "context", "ControlLeft"],
+    "KeyP":      ["coralL4", "blue", "context", "ControlLeft"],
 
-    "Digit7": ["coralL1", "red", "auto", "ControlLeft"],
-    "Digit8": ["coralL2", "red", "auto", "ControlLeft"],
-    "Digit9": ["coralL3", "red", "auto", "ControlLeft"],
-    "Digit0": ["coralL4", "red", "auto", "ControlLeft"],
+    "Digit7": ["coralL1", "blue", "auto", "ControlLeft"],
+    "Digit8": ["coralL2", "blue", "auto", "ControlLeft"],
+    "Digit9": ["coralL3", "blue", "auto", "ControlLeft"],
+    "Digit0": ["coralL4", "blue", "auto", "ControlLeft"],
 
-    "KeyB":      ["processor", "red", "context", "ControlLeft"],
-    "KeyN":      ["net",       "red", "context", "ControlLeft"],
-    "KeyM":      ["abyss",     "red", "context", "ControlLeft"],
+    "KeyB":      ["processor", "blue", "context", "ControlLeft"],
+    "KeyN":      ["net",       "blue", "context", "ControlLeft"],
+    "KeyM":      ["abyss",     "blue", "context", "ControlLeft"],
 };
 
 $(document).on("keydown", e => {

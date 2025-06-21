@@ -331,14 +331,14 @@ export class Match {
         setLeaves(count) { this.leaves = count; }
 
        
-        addAlgaeProcessor()    { this.algaeProcessor++};
-        removeAlgaeProcessor() { if (this.algaeProcessor > 0) { this.algaeProcessor--}};
+        addProcessor()    { this.algaeProcessor++};
+        removeProcessor() { if (this.algaeProcessor > 0) { this.algaeProcessor--}};
 
-        addAlgaeNet()    { this.algaeNet++};
-        removeAlgaeNet() { if (this.algaeNet > 0) { this.algaeNet--}};
+        addNet()    { this.algaeNet++};
+        removeNet() { if (this.algaeNet > 0) { this.algaeNet--}};
 
-         addAlgae()    { this.algaeNet++};
-        removeAlgaeNet() { if (this.algaeNet > 0) { this.algaeNet--}};
+        addAbyss() {this.algaeAbyss++};
+        removeAbyss() {if (this.algaeAbyss > 0) { this.algaeAbyss--}};
 
         addAutoCoralL1()      { this.autoCoralL1++; };
         removeAutoCoralL1()   { if (this.autoCoralL1 > 0) this.autoCoralL1--; };
