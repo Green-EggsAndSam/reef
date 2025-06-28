@@ -10,10 +10,47 @@ var db = window.db;
 
 // Put manual db generation here
 function generate() {
-    generateMatch(1, 0, Match.Type.QUALIFICATION, [5, 12, 7], [3, 10, 15], 1, 8);
-    generateMatch(2, 0, Match.Type.QUALIFICATION, [1, 4, 8], [6, 9, 11], 4, 5);
-    generateMatch(3, 0, Match.Type.QUALIFICATION, [2, 13, 14], [0, 16, 17], 3, 6);
-    generateMatch(4, 0, Match.Type.QUALIFICATION, [18, 19, 20], [21, 22, 23], 2, 7);
+    generateMatch(1, 0, Match.Type.QUALIFICATION, [28, 4, 13], [22, 7, 1], 1, 8);
+generateMatch(2, 0, Match.Type.QUALIFICATION, [10, 21, 20], [67, 18, 15], 1, 8);
+generateMatch(3, 0, Match.Type.QUALIFICATION, [27, 6, 11], [12, 14, 25], 1, 8);
+generateMatch(4, 0, Match.Type.QUALIFICATION, [99, 29, 9], [24, 3, 16], 1, 8);
+generateMatch(5, 0, Match.Type.QUALIFICATION, [2, 17, 30], [19, 26, 5], 1, 8);
+generateMatch(6, 0, Match.Type.QUALIFICATION, [18, 12, 4], [13, 67, 6], 1, 8);
+generateMatch(7, 0, Match.Type.QUALIFICATION, [16, 10, 22], [25, 27, 20], 1, 8);
+generateMatch(8, 0, Match.Type.QUALIFICATION, [7, 24, 29], [15, 5, 30], 1, 8);
+generateMatch(9, 0, Match.Type.QUALIFICATION, [19, 3, 11], [2, 28, 21], 1, 8);
+generateMatch(10, 0, Match.Type.QUALIFICATION, [1, 99, 26], [17, 9, 14], 1, 8);
+generateMatch(11, 0, Match.Type.QUALIFICATION, [25, 5, 22], [4, 24, 67], 1, 8);
+generateMatch(12, 0, Match.Type.QUALIFICATION, [6, 10, 18], [3, 28, 27], 1, 8);
+generateMatch(13, 0, Match.Type.QUALIFICATION, [11, 17, 29], [9, 13, 12], 1, 8);
+generateMatch(14, 0, Match.Type.QUALIFICATION, [21, 19, 14], [30, 20, 99], 1, 8);
+generateMatch(15, 0, Match.Type.QUALIFICATION, [1, 15, 16], [26, 7, 2], 1, 8);
+generateMatch(16, 0, Match.Type.QUALIFICATION, [4, 22, 11], [17, 18, 24], 1, 8);
+generateMatch(17, 0, Match.Type.QUALIFICATION, [27, 5, 13], [99, 10, 19], 1, 8);
+generateMatch(18, 0, Match.Type.QUALIFICATION, [26, 15, 25], [29, 3, 20], 1, 8);
+generateMatch(19, 0, Match.Type.QUALIFICATION, [2, 16, 12], [21, 6, 1], 1, 8);
+generateMatch(20, 0, Match.Type.QUALIFICATION, [14, 67, 28], [9, 30, 7], 1, 8);
+generateMatch(21, 0, Match.Type.QUALIFICATION, [13, 26, 3], [99, 25, 24], 1, 8);
+generateMatch(22, 0, Match.Type.QUALIFICATION, [4, 19, 6], [15, 29, 22], 1, 8);
+generateMatch(23, 0, Match.Type.QUALIFICATION, [7, 16, 17], [67, 11, 10], 1, 8);
+generateMatch(24, 0, Match.Type.QUALIFICATION, [12, 30, 28], [20, 2, 14], 1, 8);
+generateMatch(25, 0, Match.Type.QUALIFICATION, [18, 1, 27], [5, 9, 21], 1, 8);
+generateMatch(26, 0, Match.Type.QUALIFICATION, [6, 22, 99], [15, 11, 7], 1, 8);
+generateMatch(27, 0, Match.Type.QUALIFICATION, [20, 28, 17], [16, 13, 25], 1, 8);
+generateMatch(28, 0, Match.Type.QUALIFICATION, [5, 4, 29], [18, 21, 26], 1, 8);
+generateMatch(29, 0, Match.Type.QUALIFICATION, [67, 19, 30], [1, 12, 3], 1, 8);
+generateMatch(30, 0, Match.Type.QUALIFICATION, [24, 2, 9], [10, 14, 27], 1, 8);
+generateMatch(31, 0, Match.Type.QUALIFICATION, [20, 6, 15], [28, 11, 5], 1, 8);
+generateMatch(32, 0, Match.Type.QUALIFICATION, [30, 21, 3], [22, 13, 17], 1, 8);
+generateMatch(33, 0, Match.Type.QUALIFICATION, [24, 27, 26], [29, 67, 1], 1, 8);
+generateMatch(34, 0, Match.Type.QUALIFICATION, [9, 25, 18], [12, 7, 19], 1, 8);
+generateMatch(35, 0, Match.Type.QUALIFICATION, [16, 14, 99], [10, 2, 4], 1, 8);
+generateMatch(36, 0, Match.Type.QUALIFICATION, [5, 17, 67], [28, 29, 6], 1, 8);
+generateMatch(37, 0, Match.Type.QUALIFICATION, [22, 12, 21], [11, 26, 9], 1, 8);
+generateMatch(38, 0, Match.Type.QUALIFICATION, [14, 15, 24], [19, 18, 16], 1, 8);
+generateMatch(39, 0, Match.Type.QUALIFICATION, [13, 20, 7], [27, 99, 2], 1, 8);
+generateMatch(40, 0, Match.Type.QUALIFICATION, [3, 25, 10], [30, 1, 4], 1, 8);
+
     // generateMatch(1, 0, Match.Type.PLAYOFF, [], [], 1, 8);
     // generateMatch(2, 0, Match.Type.PLAYOFF, [], [], 4, 5);
     // generateMatch(3, 0, Match.Type.PLAYOFF, [], [], 3, 6);
@@ -21,7 +58,6 @@ function generate() {
 }
 
 $(generate);
-
 /**
  * Creates a new match to be played and puts it in the database. Does not add the match
  * if a match with the same number, set, and type is already in the database.
@@ -104,6 +140,8 @@ export function getAllMatches() {
 
 // Helper functions
 function getMatchData(number, set, type) {
+    console.log(number);
+    console.log(db);
     return db.findOne({ number: number, set: set, type: type });
 }
 
