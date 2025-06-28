@@ -1,7 +1,7 @@
 {
-  "name": "minifrc-crescendo-fms",
+  "name": "minifrc-reefscape-fms",
   "version": "1.0.0",
-  "description": "Field Management System for MiniFRC: Crescendo",
+  "description": "Field Management System for MiniFRC: Reefscape",
   "main": "src/main/index.js",
   "scripts": {
     "start": "electron .",
