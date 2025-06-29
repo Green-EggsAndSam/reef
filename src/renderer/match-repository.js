@@ -140,8 +140,6 @@ export function getAllMatches() {
 
 // Helper functions
 function getMatchData(number, set, type) {
-    console.log(number);
-    console.log(db);
     return db.findOne({ number: number, set: set, type: type });
 }
 

@@ -85,8 +85,12 @@ export class Team {
                     this.#bargePoints += match.blue.bargePoints;
                 }
             }
-        });
+        },
+    );
         this.#matchesPlayed = matches.length;
+        //Calculate averages for auto and barke points
+        this.#autoPoints = this.#autoPoints / this.#matchesPlayed;
+        this.#bargePoints = this.#bargePoints / this.#matchesPlayed;
     }
 
     get rankingScore() {
