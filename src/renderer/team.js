@@ -88,7 +88,7 @@ export class Team {
         },
     );
         this.#matchesPlayed = matches.length;
-        //Calculate averages for auto and barke points
+        //Calculate averages for auto and barge points
         this.#autoPoints = this.#autoPoints / this.#matchesPlayed;
         this.#bargePoints = this.#bargePoints / this.#matchesPlayed;
     }
