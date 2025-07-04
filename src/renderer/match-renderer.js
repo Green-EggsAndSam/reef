@@ -20,7 +20,7 @@ export function update() {
         [match.red, match.blue].forEach(alliance =>
             updateMatchPanel(
                 match.friendlyName, alliance.teamNumbers, alliance.number, match.isPlayoff(),
-                alliance.matchPoints, alliance.filledCoralLevels,
+                alliance.matchPoints, alliance.filledCoralLevels, alliance.coopertition,
                 alliance.algae, alliance.coralRPThreshold, alliance.color
             )
         );
@@ -30,14 +30,14 @@ export function update() {
 // Separated to allow rendering match panel in control window
 export function updateMatchPanel(
     matchName, teams, number, isPlayoff,
-    matchPoints, filledCoralLevels,
+    matchPoints, filledCoralLevels, coopertition,
     algae, coralRPThreshold, color
 ) {
     updateMatchName(matchName);
     updateTeams(...teams, number, isPlayoff, color);
     updateMatchPoints(matchPoints, color);
     updateCoralLevels(filledCoralLevels, coralRPThreshold, color);
-    updateAlgae(algae, color);
+    updateAlgae(algae, coopertition, color);
 }
 
 export function startVideo() {
@@ -52,7 +52,7 @@ export function startVideo() {
 
 function updateTimer() {
     if (Competition.inMatch) {
-        const MATCH_LENGTH = 150 * 1000; // milliseconds
+        const MATCH_LENGTH = 1 * 1000; // milliseconds
         $("#timer #bar").width(((Competition.matchMillisElapsed / MATCH_LENGTH) * 100) + "%");
         $("#timer #time").text(Competition.friendlyMatchTime);
         if (Competition.inEndgame) $("#timer #bar").css("background-color", "yellow");
@@ -99,8 +99,10 @@ function updateCoralLevels(filledCoralLevels, coralRPThreshold, color) {
     $(`#match-view ${getColorClass(color)}.coral-panel .coral-count`).text(`${filledCoralLevels}/${coralRPThreshold}`);
 }
 
-function updateAlgae(algae, color) {
+function updateAlgae(algae, coopertition, color) {
     $('#match-view ' + getColorClass(color) + '.coral-panel .algae-count').text(algae);
+    if (coopertition) $(`#match-view ${getColorClass(color)}.coral-panel .coop-indicator`).addClass("lit");
+    else $(`#match-view ${getColorClass(color)}.coral-panel .coop-indicator`).removeClass("lit");
 }
 
 function updateStage(barge, trapNotes, harmony, color) {

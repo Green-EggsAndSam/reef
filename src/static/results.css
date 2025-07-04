@@ -52,11 +52,11 @@
     flex-grow: 1;
     justify-content: space-evenly;
     align-items: stretch;
-    margin: 70px;
+    margin: 35px;
     background-color: lightgrey;
     border: 5px solid var(--border-color);
-    border-radius: 50px;
-    padding: 50px;
+    border-radius: 25px;
+    padding: 25px;
 }
 
 #results-view #frame #match-label {
@@ -78,8 +78,8 @@
     flex-direction: column;
     justify-content: space-evenly;
     border: 5px solid var(--border-color);
-    border-radius: 50px;
-    padding: 50px;
+    border-radius: 25px;
+    padding: 25px;
 }
 
 #results-view #frame .red.alliance-panel {
@@ -91,7 +91,7 @@
 }
 
 #results-view #frame .alliance-panel .overview {
-    height: 300px;
+    height: 225px;
     display: flex;
     flex-direction: row;
     align-items: stretch;
@@ -102,19 +102,19 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: stretch;
-    font-size: 40px;
-    margin-bottom: 40px;
+    font-size: 30px;
+    margin-bottom: 20px;
 }
 
 .alliance-panel .overview .labels {
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    width: 270px;
+    width: 375px;
 }
 
 .alliance-panel .overview .labels .rank-label {
-    margin-left: 80px;
+    margin-left: 40px;
 }
 
 .alliance-panel .overview .teams .team {
@@ -126,18 +126,18 @@
 }
 
 .alliance-panel .overview .teams .team .avatar {
-    height: 50px; width: 50px;
+    height: 25px; width: 25px;
 }
 
 .alliance-panel .overview .teams .team .number {
     margin-left: 5px;
-    width: 60px;
+    width: 45px;
     vertical-align: text-bottom;
 }
 
 .alliance-panel .overview .teams .team .rank {
     align-self: flex-end;
-    margin-left: 75px;
+    margin-left: 57px;
     vertical-align: text-bottom;
 }
 
@@ -147,8 +147,8 @@
     justify-self: flex-end;
     align-items: center;
     justify-content: space-between;
-    width: 250px; height: 250px;
-    margin-left: 100px;
+    width: 188px; height: 188px;
+    margin-left: 50px;
     background-color: white;
     border: 5px solid var(--border-color);
     border-radius: 10px;
@@ -162,7 +162,7 @@
 
 .alliance-panel .overview .score-panel .score {
     font-family: "Roboto";
-    font-size: 120px;
+    font-size: 90px;
 }
 
 .alliance-panel .overview .score-panel .result {
@@ -181,11 +181,11 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin-top: 20px;
-    padding: 20px;
+    margin-top: 10px;
+    padding: 10px;
     background-color: dimgrey;
     border: 5px solid var(--border-color);
-    border-radius: 30px;
+    border-radius: 15px;
 }
 
 .alliance-panel .details .rp-panel .count {
@@ -206,17 +206,17 @@
     align-items: center;
     justify-content: space-around;
     margin: 5px 0;
-    width: 150px; height: 60px;
+    width: 113px; height: 90px;
     background-color: lightgrey;
     border: 5px solid var(--border-color);
-    border-radius: 20px;
+    border-radius: 10px;
     box-sizing: border-box;
 }
 
 .alliance-panel .details .rp-panel .indicator img { height: 60px; }
 
-.rp-panel .autoRP.indicator img { content: url(../../images/grey-melody.png); transform: scale(0.7); }
-.rp-panel .lit.autoRP.indicator img { content: url(../../images/lit-melody.png); transform: scale(0.7);  }
+.rp-panel .autoRP.indicator img { content: url(../../images/autoRP.png); transform: scale(0.7); }
+.rp-panel .lit.autoRP.indicator img { content: url(../../images/lit-autoRP.png); transform: scale(0.7);  }
 .rp-panel .coralRP.indicator img { content: url(../../images/grey-ensemble.png); transform: scale(0.8); }
 .rp-panel .lit.coralRP.indicator img { content: url(../../images/lit-ensemble.png); transform: scale(0.8); }
 .rp-panel .bargeRP.indicator img { content: url(../../images/grey-ensemble.png); transform: scale(0.8); }
@@ -230,18 +230,18 @@
     justify-content: space-around;
     flex-grow: 1;
     width: 200px;
-    margin-top: 20px;
-    margin-left: 20px;
+    margin-top: 10px;
+    margin-left: 10px;
     background-color: dimgrey;
     border: 5px solid var(--border-color);
-    border-radius: 30px;
+    border-radius: 15px;
 }
 
 .alliance-panel .details .category-panel .category {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    padding: 0 20px;
+    padding: 0 10px;
 }
 
 .alliance-panel .details .category-panel .category .label {

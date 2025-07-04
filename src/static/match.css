@@ -270,14 +270,14 @@
 /* Corals */
 #overlay .coral-panel {
     position: relative;
-    width: 510px; height: 127.5px;
+    width: 536px; height: 134px;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
     justify-content: space-between;
 }
-#overlay .coral-panel.red { left: -55px; }
-#overlay .coral-panel.blue { left: 55px; }
+#overlay .coral-panel.red { left: -56px; }
+#overlay .coral-panel.blue { left: 58px; }
 #overlay .coral-panel.red { flex-direction: row-reverse; align-self: flex-end; }
 #overlay .coral-panel.blue { flex-direction: row; align-self: flex-start; }
 
@@ -287,8 +287,8 @@
     box-sizing: border-box;
     border: 5px solid black;
     background-color: white;
-    height: 90px;
-    width: 270px;
+    height: 95px;
+    width: 284px;
 }
 #overlay .red .coral-border { left: 0px; }
 #overlay .blue .coral-border { left: 0px; }
@@ -296,26 +296,26 @@
 #overlay .coral-icon {
     position: absolute;
     height: 100%;
-    width: 82.5px;
+    width: 87px;
     background-color: white;    
     background-image: url(../../images/coral.png);
     background-position: center;
-    background-size: 90px;
+    background-size: 95px;
 }
 #overlay .red .coral-icon { background-color: rgb(233, 13, 13); }
 #overlay .blue .coral-icon { background-color: rgb(62, 62, 255); }
 
 #overlay .coral-panel .coral-count {
     position: absolute;
-    left: 55px;
+    left: 58px;
     right: 0px;
     margin: auto;
-    width: 135px;
+    width: 142px;
     top: 2px;
     text-align: center;
     font-family: "Roboto Slab";
     color: black;
-    font-size: 48px;
+    font-size: 50px;
 }
 
 #overlay .coral-panel .algae-border {
@@ -324,8 +324,8 @@
     box-sizing: border-box;
     border: 5px solid black;
     background-color: white;
-    height: 90px;
-    width: 270px;
+    height: 95px;
+    width: 284px;
 }
 #overlay .red .algae-border { left: 0px; }
 #overlay .blue .algae-border { left: 0px; }
@@ -333,11 +333,11 @@
 #overlay .algae-icon {
     position: absolute;
     height: 100%;
-    width: 82.5px;
+    width: 87px;
     background-color: white;    
     background-image: url(../../images/algae.png);
     background-position: center;
-    background-size: 90px;
+    background-size: 95px;
 }
 #overlay .red .algae-icon { background-color: rgb(233, 13, 13); }
 #overlay .blue .algae-icon { background-color: rgb(62, 62, 255); }
@@ -347,28 +347,28 @@
     left: 55px;
     right: 0px;
     margin: auto;
-    width: 135px;
+    width: 142px;
     top: 2px;
     text-align: center;
     font-family: "Roboto Slab";
     color: black;
-    font-size: 48px;
+    font-size: 50px;
 }
 
 #overlay .coop-indicator {
     position: relative;
-    bottom: -100px;
-    height: 60px;
-    width: 60px;
+    bottom: -85px;
+    height: 80px;
+    width: 100px;
     background-color: grey;
     background-image: url(../../images/handshake.svg);
     background-position: center;
-    background-size: 60px;
+    background-size: 100px;
     box-sizing: border-box;
     border: 5px solid black;
-    border-radius: 60px;
+    border-radius: 100px;
 }
 
-#overlay .red .coop-indicator { left: 100px; }
-#overlay .blue .coop-indicator { left: -100px; }
+#overlay .red .coop-indicator { left: 269px; }
+#overlay .blue .coop-indicator { left: -269px; }
 #overlay .lit.coop-indicator { background-color: goldenrod; }

@@ -370,7 +370,7 @@ export class Match {
             else this.removeTeleopCoralL1();
         }
 
-                addCoralL2() {
+        addCoralL2() {
             if (Competition.inAuto) this.addAutoCoralL2();
             else this.addTeleopCoralL2();
         };
@@ -399,7 +399,7 @@ export class Match {
 
         setBarge(pos, pts) { this.barge[pos] = pts; }
 
-        setCoopertition() {
+        checkCoopertition() {
             if (Competition.inMatch && this.algaeProcessor >= 2 && !this.coopertition) {
                 this.coopertition = true;
             }

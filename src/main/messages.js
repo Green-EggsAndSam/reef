@@ -21,6 +21,7 @@ let CtrlMsg = {
     PROCESSOR:                  "processor",    // Params:  Params: { red: bool, type: string (context), undo: bool }
     NET:                        "net",          // Params:  Params: { red: bool, type: string (context), undo: bool }
     ABYSS:                      "abyss",        // Params: { red: bool, type: string (context), undo: bool }
+    COOP:                       "coop",         // Params: { red: bool, force: bool, undo: bool }
     FOUL:                       "foul",         // Params: { red: bool, tech: bool, undo: bool }
 }
 
