@@ -82,8 +82,10 @@ ipc.on(CtrlMsg.CORALL4, (_, data) => {
 ipc.on(CtrlMsg.PROCESSOR, (_, data) => {
     let alliance = data.red ? Competition.match.red : Competition.match.blue;
      if (data.undo) alliance.removeProcessor();
-        else alliance.addProcessor();
-});
+        else {
+            alliance.addProcessor();
+            alliance.checkCoopertition();
+}});
 ipc.on(CtrlMsg.NET, (_, data) => {
     let alliance = data.red ? Competition.match.red : Competition.match.blue;
     if (data.undo) alliance.removeNet();
@@ -98,7 +100,7 @@ ipc.on(CtrlMsg.ABYSS, (_, data) => {
 ipc.on(CtrlMsg.COOP, (_, data) => {
     let alliance = data.red ? Competition.match.red : Competition.match.blue;
     if (data.force) alliance.setCoopertitionForce(!data.undo);
-    else alliance.setCoopertition();
+    else alliance.checkCoopertition();
 });
 
 const bargeMap = { 0: 0, 1: Match.PointValues.PARK, 2: Match.PointValues.DEEP };
