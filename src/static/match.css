@@ -267,62 +267,97 @@
 #overlay #scoring-panel #match-panel #teams .blue.alliance-number { left: 0; }
 
 
-/* Notes */
-#overlay .note-panel {
+/* Corals */
+#overlay .coral-panel {
     position: relative;
-    width: 340px; height: 85px;
+    width: 510px; height: 127.5px;
     display: flex;
     flex-direction: row;
     align-items: flex-end;
     justify-content: space-between;
 }
+#overlay .coral-panel.red { left: -55px; }
+#overlay .coral-panel.blue { left: 55px; }
+#overlay .coral-panel.red { flex-direction: row-reverse; align-self: flex-end; }
+#overlay .coral-panel.blue { flex-direction: row; align-self: flex-start; }
 
-#overlay .note-panel.red { flex-direction: row-reverse; align-self: flex-end; }
-#overlay .note-panel.blue { flex-direction: row; align-self: flex-start; }
-
-#overlay .note-panel .note-border {
+#overlay .coral-panel .coral-border {
     position: relative;
     bottom: 0;
     box-sizing: border-box;
     border: 5px solid black;
     background-color: white;
-    height: 60px;
-    width: 180px;
+    height: 90px;
+    width: 270px;
 }
-#overlay .red .note-border { left: 0px; }
-#overlay .blue .note-border { left: 0px; }
+#overlay .red .coral-border { left: 0px; }
+#overlay .blue .coral-border { left: 0px; }
 
-#overlay .note-icon {
+#overlay .coral-icon {
     position: absolute;
     height: 100%;
-    width: 55px;
-    background-color: white;
-
-    /* inverted mask */
-    -webkit-mask: url(../../images/eighthnote.svg), linear-gradient(#fff 0 0);
-    -webkit-mask-position: center;
-    -webkit-mask-size: contain;
-    -webkit-mask-repeat: no-repeat;
-    -webkit-mask-composite: destination-out;
+    width: 82.5px;
+    background-color: white;    
+    background-image: url(../../images/coral.png);
+    background-position: center;
+    background-size: 90px;
 }
-#overlay .red .note-icon { background-color: rgb(233, 13, 13); }
-#overlay .blue .note-icon { background-color: rgb(62, 62, 255); }
+#overlay .red .coral-icon { background-color: rgb(233, 13, 13); }
+#overlay .blue .coral-icon { background-color: rgb(62, 62, 255); }
 
-#overlay .note-panel .note-count {
+#overlay .coral-panel .coral-count {
     position: absolute;
     left: 55px;
     right: 0px;
     margin: auto;
-    width: 90px;
+    width: 135px;
     top: 2px;
     text-align: center;
     font-family: "Roboto Slab";
     color: black;
-    font-size: 32px;
+    font-size: 48px;
+}
+
+#overlay .coral-panel .algae-border {
+    position: relative;
+    bottom: 0;
+    box-sizing: border-box;
+    border: 5px solid black;
+    background-color: white;
+    height: 90px;
+    width: 270px;
+}
+#overlay .red .algae-border { left: 0px; }
+#overlay .blue .algae-border { left: 0px; }
+
+#overlay .algae-icon {
+    position: absolute;
+    height: 100%;
+    width: 82.5px;
+    background-color: white;    
+    background-image: url(../../images/algae.png);
+    background-position: center;
+    background-size: 90px;
+}
+#overlay .red .algae-icon { background-color: rgb(233, 13, 13); }
+#overlay .blue .algae-icon { background-color: rgb(62, 62, 255); }
+
+#overlay .coral-panel .algae-count {
+    position: absolute;
+    left: 55px;
+    right: 0px;
+    margin: auto;
+    width: 135px;
+    top: 2px;
+    text-align: center;
+    font-family: "Roboto Slab";
+    color: black;
+    font-size: 48px;
 }
 
 #overlay .coop-indicator {
     position: relative;
+    bottom: -100px;
     height: 60px;
     width: 60px;
     background-color: grey;
@@ -333,69 +368,7 @@
     border: 5px solid black;
     border-radius: 60px;
 }
+
+#overlay .red .coop-indicator { left: 100px; }
+#overlay .blue .coop-indicator { left: -100px; }
 #overlay .lit.coop-indicator { background-color: goldenrod; }
-
-/* Auto */
-#overlay .auto-panel {
-    margin-top: 50px;
-    height: 70px;
-    width: 200px;
-    display: flex;
-    flex-direction: column;
-}
-
-#overlay .auto-panel .leave {
-    height: 60px;
-    width: 60px;
-}
-
-/* Barge */
-#overlay .barge-panel {
-    position: relative;
-    margin-top: 60px;
-    height: 35px;
-    width: 320px;
-}
-
-.barge-panel .barge {
-    position: relative;
-}
-
-.barge-panel .barge .border {
-    position: relative;
-    width: 65px;
-    inset: 0 0 auto 0;
-    margin: 0 auto;
-    border-bottom: 35px solid black;
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-}
-.barge-panel .barge .platform {
-    position: absolute;
-    width: 60px;
-    inset: 5px 0 auto 0;
-    margin: 0 auto;
-    border-bottom: 30px solid rgb(170, 170, 170);
-    border-left: 15px solid transparent; /* looks better offset 1px */
-    border-right: 16px solid transparent;
-}
-
-.barge-panel .robot {
-    display: none;
-    z-index: 1;
-    position: absolute;
-    transform: scale(3);
-    image-rendering: pixelated;
-}
-.barge-panel .robot.park {
-    display: block;
-    transform-origin: bottom left;
-    bottom: -10px;
-    left: -10px;
-}
-.barge-panel .robot.deep {
-    display: block;
-    transform-origin: bottom center;
-    bottom: 35px;
-    left: 46px;
-}

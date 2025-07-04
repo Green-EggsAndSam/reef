@@ -100,7 +100,7 @@ function updateCoralLevels(filledCoralLevels, coralRPThreshold, color) {
 }
 
 function updateAlgae(algae, color) {
-    $('#match-view ' + getColorClass(color) + '.algae-panel .coral-count').text(algae);
+    $('#match-view ' + getColorClass(color) + '.coral-panel .algae-count').text(algae);
 }
 
 function updateStage(barge, trapNotes, harmony, color) {
