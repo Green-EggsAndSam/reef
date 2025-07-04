@@ -424,6 +424,13 @@ export class Match {
                 + this.penaltyPoints;
         }
 
+        get autoPoints() {
+            return this.autoCoralL1 * Match.PointValues.AUTO_CORAL_L1
+                + this.autoCoralL2 * Match.PointValues.AUTO_CORAL_L2
+                + this.autoCoralL3 * Match.PointValues.AUTO_CORAL_L3
+                + this.autoCoralL4 * Match.PointValues.AUTO_CORAL_L4;
+        }
+
         get leavePoints() {
             return this.leaves * Match.PointValues.LEAVE;
         }
