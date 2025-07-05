@@ -178,88 +178,71 @@
   <!-- Score overlay -->
   <div id="match-view" style="height: auto;">
     <div id="overlay">
-      <div id="scoring-panel" class="row">
+            <div id="scoring-panel">
 
-        <div class="column">
-          <div class="blue coral-panel row">
-            <div class="coral-border">
-              <div class="coral-icon"></div>
-              <div class="coral-count">4/4</div>
-            </div>
-            <div class="algae-border">
-              <div class="algae-icon"></div>
-              <div class="algae-count">1</div>
-            </div>
-            <div class="coop-indicator"></div>
-          </div>
+                <div class="column">
+                    <div class="blue coral-panel row">
+                        <div class="coral-border">
+                            <div class="coral-icon"></div>
+                            <div class="coral-count">4/4</div>
+                        </div>
+                        <div class="algae-border">
+                            <div class="algae-icon"></div>
+                            <div class="algae-count">1</div>
+                        </div>
+                        <div class="coop-indicator"></div>
+                    </div>
 
-          <div class="row">
-            <div class="blue auto-panel row">
-              <div class="leave indicator"></div>
-              <div class="leave indicator"></div>
-              <div class="leave indicator"></div>
+                    <div class="row">
+                        <div style="width: 40px"></div>
+                    </div>
+                </div>
+
+                <div id="match-panel">
+                    <div id="match-name"></div>
+                    <div id="score-box">
+                        <div class="blue">
+                            0
+                        </div>
+                        <div class="red">
+                            0
+                        </div>
+                    </div>
+                    <div id="teams">
+                        <div hidden class="blue alliance-number"></div>
+                        <div class="blue team-column">
+                            <div class="number"></div>
+                            <div class="number"></div>
+                            <div class="number"></div>
+                        </div>
+                        <div hidden class="red alliance-number"></div>
+                        <div class="red team-column">
+                            <div class="number"></div>
+                            <div class="number"></div>
+                            <div class="number"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="column">
+                    <div class="red coral-panel row">
+                        <div class="coral-border">
+                            <div class="coral-icon"></div>
+                            <div class="coral-count">4/4</div>
+                        </div>
+                        <div class="algae-border">
+                            <div class="algae-icon"></div>
+                            <div class="algae-count">1</div>
+                        </div>
+                        <div class="coop-indicator"></div>
+                    </div>
+                    <div class="row">
+                        <div style="width: 40px"></div>
+                    </div>
+                </div>
+
             </div>
-            <div style="width: 40px;"></div>
-            <div class="blue row barge-panel">
-              <div class="barge left"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot left" src="../../images/endgame-blue-1.png"></div>
-              <div class="barge mid"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot mid" src="../../images/endgame-blue-2.png"></div>
-              <div class="barge right"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot right" src="../../images/endgame-blue-3.png"></div>
-            </div>
-          </div>
         </div>
-
-        <div id="match-panel">
-          <div id="match-name"></div>
-          <div id="score-box">
-            <div class="blue">0</div>
-            <div class="red">0</div>
-          </div>
-          <div id="teams">
-            <div hidden class="blue alliance-number"></div>
-            <div class="blue team-column">
-              <div class="number"></div>
-              <div class="number"></div>
-              <div class="number"></div>
-            </div>
-            <div hidden class="red alliance-number"></div>
-            <div class="red team-column">
-              <div class="number"></div>
-              <div class="number"></div>
-              <div class="number"></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="column">
-          <div class="red coral-panel">
-            <div class="coral-border">
-              <div class="coral-icon"></div>
-              <div class="coral-count">4/4</div>
-            </div>
-            <div class="algae-border">
-              <div class="algae-icon"></div>
-              <div class="algae-count">1</div>
-            </div>
-            <div class="coop-indicator"></div>
-          </div>
-
-          <div class="red row">
-            <div class="red auto-panel row">
-              <div class="leave indicator"></div>
-              <div class="leave indicator"></div>
-              <div class="leave indicator"></div>
-            </div>
-            <div style="width: 30px;"></div>
-            <div class="red row barge-panel">
-              <div class="barge left"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot left" src="../../images/endgame-red-1.png"></div>
-              <div class="barge mid"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot mid" src="../../images/endgame-red-2.png"></div>
-              <div class="barge right"><div class="border"></div><div class="platform"></div><div class="trap"></div><img class="robot right" src="../../images/endgame-red-3.png"></div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
   </div>
 
   <script src="../renderer/control-window-renderer.js" type="module"></script>
