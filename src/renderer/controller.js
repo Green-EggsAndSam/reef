@@ -15,7 +15,7 @@ const DEBUG_FAST_MATCH = 1; // Match length multiplier for fast debugging
 
 const TELEOP_START = 15 * DEBUG_FAST_MATCH;
 const ENDGAME_START = 120 * DEBUG_FAST_MATCH;
-const MATCH_END = 1 * DEBUG_FAST_MATCH;
+const MATCH_END = 150 * DEBUG_FAST_MATCH;
 
 const AUTO_LENGTH = 15 * DEBUG_FAST_MATCH;
 const TELEOP_LENGTH = 135 * DEBUG_FAST_MATCH;
