@@ -388,7 +388,7 @@ export class Match {
             else this.removeTeleopCoralL3();
         }
 
-                addCoralL4() {
+        addCoralL4() {
             if (Competition.inAuto) this.addAutoCoralL4();
             else this.addTeleopCoralL4();
         };
