@@ -91,9 +91,9 @@ export function generateMatch(number, set, type, redTeams, blueTeams, redAllianc
             redCoralL2: 0,
             redCoralL3: 0,
             redCoralL4: 0,
-            redAlgaeNet: 0,
-            redAlgaeProcessor: 0,
-            redAlgaeAbyss: 0,
+            redNet: 0,
+            redProcessor: 0,
+            redAbyss: 0,
             redCoopertition: false,
             redBarge: [0,0,0],
             redFouls: 0,
@@ -114,9 +114,9 @@ export function generateMatch(number, set, type, redTeams, blueTeams, redAllianc
             blueCoralL2: 0,
             blueCoralL3: 0,
             blueCoralL4: 0,
-            blueAlgaeNet: 0,
-            blueAlgaeProcessor: 0,
-            blueAlgaeAbyss: 0,
+            blueNet: 0,
+            blueProcessor: 0,
+            blueAbyss: 0,
             blueCoopertition: false,
             blueBarge: [0,0,0],
             blueFouls: 0,
@@ -227,11 +227,11 @@ export function setCoralL3(coralL3, number, set, type, color) { updateByAlliance
 export function getCoralL4(number, set, type, color) { return lookupByAlliance("CoralL4", color, number, set, type); }
 export function setCoralL4(coralL4, number, set, type, color) { updateByAlliance("CoralL4", coralL4, color, number, set, type); }
 export function getAlgaeNet(number, set, type, color) { return lookupByAlliance("AlgaeNet", color, number, set, type); }
-export function setAlgaeNet(algaeNet, number, set, type, color) { updateByAlliance("AlgaeNet", algaeNet, color, number, set, type); }
+export function setAlgaeNet(net, number, set, type, color) { updateByAlliance("AlgaeNet", net, color, number, set, type); }
 export function getAlgaeProcessor(number, set, type, color) { return lookupByAlliance("AlgaeProcessor", color, number, set, type); }
-export function setAlgaeProcessor(algaeProcessor, number, set, type, color) { updateByAlliance("AlgaeProcessor", algaeProcessor, color, number, set, type); }
+export function setAlgaeProcessor(processor, number, set, type, color) { updateByAlliance("AlgaeProcessor", processor, color, number, set, type); }
 export function getAlgaeAbyss(number, set, type, color) { return lookupByAlliance("AlgaeAbyss", color, number, set, type); }
-export function setAlgaeAbyss(algaeAbyss, number, set, type, color) { updateByAlliance("AlgaeAbyss", algaeAbyss, color, number, set, type); }
+export function setAlgaeAbyss(abyss, number, set, type, color) { updateByAlliance("AlgaeAbyss", abyss, color, number, set, type); }
 
 export function getCoopertition(number, set, type, color) { return lookupByAlliance("Coopertition", color, number, set, type); }
 export function setCoopertition(coopertition, number, set, type, color) { updateByAlliance("Coopertition", coopertition, color, number, set, type); }
