@@ -211,7 +211,7 @@ ipc.on(RenderMsg.MATCH_DATA, (event, data) => {
     [data.red, data.blue].forEach(alliance => updateMatchPanel
         (
             data.matchName, alliance.teams, alliance.number, data.isPlayoff,
-            alliance.matchPoints, alliance.filledCoralLevels, alliance.algae, alliance.coralRPThreshold, alliance.color
+            alliance.matchPoints, alliance.filledCoralLevels, alliance.coopertition, alliance.algae, alliance.coralRPThreshold, alliance.color
         )
     );
 });
