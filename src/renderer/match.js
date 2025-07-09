@@ -318,9 +318,9 @@ export class Match {
         /** @type {number} */    coralL2 = 0;
         /** @type {number} */    coralL3 = 0;
         /** @type {number} */    coralL4 = 0;
-        /** @type {number} */    algaeProcessor = 0;
-        /** @type {number} */    algaeNet = 0;
-        /** @type {number} */    algaeAbyss = 0;
+        /** @type {number} */    processor = 0;
+        /** @type {number} */    net = 0;
+        /** @type {number} */    abyss = 0;
 
         /** @type {boolean} */   coopertition = false;
         /** @type {number[]} */  barge = [0,0,0]; // Point values of completed endgame tasks
@@ -331,14 +331,14 @@ export class Match {
         setLeaves(count) { this.leaves = count; }
 
        
-        addProcessor()    { this.algaeProcessor++};
-        removeProcessor() { if (this.algaeProcessor > 0) { this.algaeProcessor--}};
+        addProcessor()    { this.processor++};
+        removeProcessor() { if (this.processor > 0) { this.processor--}};
 
-        addNet()    { this.algaeNet++};
-        removeNet() { if (this.algaeNet > 0) { this.algaeNet--}};
+        addNet()    { this.net++};
+        removeNet() { if (this.net > 0) { this.net--}};
 
-        addAbyss() {this.algaeAbyss++};
-        removeAbyss() {if (this.algaeAbyss > 0) { this.algaeAbyss--}};
+        addAbyss() {this.abyss++};
+        removeAbyss() {if (this.abyss > 0) { this.abyss--}};
 
         addAutoCoralL1()      { this.autoCoralL1++; };
         removeAutoCoralL1()   { if (this.autoCoralL1 > 0) this.autoCoralL1--; };
@@ -400,7 +400,7 @@ export class Match {
         setBarge(pos, pts) { this.barge[pos] = pts; }
 
         checkCoopertition() {
-            if (Competition.inMatch && this.algaeProcessor >= 2 && !this.coopertition) {
+            if (Competition.inMatch && this.processor >= 2 && !this.coopertition) {
                 this.coopertition = true;
             }
         }
@@ -446,9 +446,9 @@ export class Match {
         }
 
         get algaePoints() {
-            return this.algaeProcessor * Match.PointValues.ALGAE_PROCESSOR
-                + this.algaeNet * Match.PointValues.ALGAE_NET
-                + this.algaeAbyss * Match.PointValues.ALGAE_ABYSS;
+            return this.processor * Match.PointValues.ALGAE_PROCESSOR
+                + this.net * Match.PointValues.ALGAE_NET
+                + this.abyss * Match.PointValues.ALGAE_ABYSS;
         }
 
         get bargePoints() {
@@ -483,7 +483,7 @@ export class Match {
         }
 
         get algae() {
-            return this.algaeProcessor + this.algaeNet + this.algaeAbyss;
+            return this.processor + this.net + this.abyss;
         }
 
         get coralRP() {
@@ -515,10 +515,10 @@ export class Match {
             this.coralL2          = repository.getCoralL2(...this.#match.#id, this.color);
             this.coralL3          = repository.getCoralL3(...this.#match.#id, this.color);
             this.coralL4          = repository.getCoralL4(...this.#match.#id, this.color);
-            this.algaeProcessor  = repository.getAlgaeProcessor(...this.#match.#id, this.color);
+            this.processor  = repository.getAlgaeProcessor(...this.#match.#id, this.color);
             this.barge          = repository.getBarge(...this.#match.#id, this.color);
-            this.algaeNet         = repository.getAlgaeNet(...this.#match.#id, this.color);
-            this.algaeAbyss       = repository.getAlgaeAbyss(...this.#match.#id, this.color);
+            this.net         = repository.getAlgaeNet(...this.#match.#id, this.color);
+            this.abyss       = repository.getAlgaeAbyss(...this.#match.#id, this.color);
             this.coopertition      = repository.getCoopertition(...this.#match.#id, this.color);
             this.fouls             = repository.getFouls(...this.#match.#id, this.color);
             this.techFouls         = repository.getTechFouls(...this.#match.#id, this.color);
@@ -535,9 +535,9 @@ export class Match {
             repository.setCoralL2(this.coralL2, ...this.#match.#id, this.color);
             repository.setCoralL3(this.coralL3, ...this.#match.#id, this.color);
             repository.setCoralL4(this.coralL4, ...this.#match.#id, this.color);
-            repository.setAlgaeProcessor(this.algaeProcessor, ...this.#match.#id, this.color);
-            repository.setAlgaeNet(this.algaeNet, ...this.#match.#id, this.color);
-            repository.setAlgaeAbyss(this.algaeAbyss, ...this.#match.#id, this.color);
+            repository.setAlgaeProcessor(this.processor, ...this.#match.#id, this.color);
+            repository.setAlgaeNet(this.net, ...this.#match.#id, this.color);
+            repository.setAlgaeAbyss(this.abyss, ...this.#match.#id, this.color);
             repository.setBarge(this.barge, ...this.#match.#id, this.color);
             repository.setCoopertition(this.coopertition, ...this.#match.#id, this.color);
             repository.setFouls(this.fouls, ...this.#match.#id, this.color);
@@ -557,9 +557,9 @@ export class Match {
             coralL2 = 0;
             coralL3 = 0;
             coralL4 = 0;
-            algaeProcessor = 0;
-            algaeNet = 0;
-            algaeAbyss = 0;
+            processor = 0;
+            net = 0;
+            abyss = 0;
             barge = [0, 0];
             coopertition = false;
             fouls = 0;

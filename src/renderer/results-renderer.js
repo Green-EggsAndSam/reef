@@ -119,7 +119,7 @@ function updateRpPanel(alliance) {
 
 function updateCategoryPanel(alliance) {
     let categories = $("#results-view " + getAllianceClass(alliance) + ".alliance-panel .category-panel .category .points");
-    [alliance.leavePoints, alliance.coralPoints, alliance.algaePoints, alliance.bargePoints, alliance.penaltyPoints].forEach(
+    [alliance.leavePoints, alliance.algaePoints, alliance.coralPoints, alliance.bargePoints, alliance.penaltyPoints].forEach(
         (e, i) => categories.eq(i).text(e)
     );
 }
